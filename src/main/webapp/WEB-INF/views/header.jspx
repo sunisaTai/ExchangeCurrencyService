@@ -1,0 +1,266 @@
+<div id="header" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:sec="http://www.springframework.org/security/tags"
+     xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+
+    <!--<spring:url var="banner" value="/resources/images/banner-graphic.png" />-->
+    <!--<spring:url var="home" value="/" />-->
+    <!--<spring:message code="button_home" var="home_label" htmlEscape="false" />-->
+    <!--<a href="${home}" name="${fn:escapeXml(home_label)}" title="${fn:escapeXml(home_label)}">-->
+    <!--<img src="${banner}" />-->
+    <!--</a>-->
+
+    <c:set var="lang" value="${fn:toUpperCase(pageContext.response.locale)}" scope="request" />
+    <jsp:useBean class="java.util.Date" id="now" scope="request" />
+    <c:set var="user" value="${pageContext.request.userPrincipal.name}" scope="request" />
+
+    <spring:url value="/resources/images/eprop-indicator.png" var="url_indicator" />
+    <spring:url value="/resources/images/eprop-flag-th.png" var="url_flagth" />
+    <spring:url value="/resources/images/eprop-flag-en.png" var="url_flagen" />
+    <spring:url value="/resources/j_spring_security_logout" var="url_signout" />
+
+    <spring:url value="/" var="home" />
+    <spring:url value="/quotations/view/quotation?form" var="url_quotationnew" />
+    <spring:url value="/contracgetUserRolets/view?form" var="url_contractnew" />
+    <spring:url value="/autorenews/view?form" var="url_autorenewnew" />
+    <spring:url value="/customers/view?form" var="url_customernew"/>
+    <spring:url value="/floorplans/view?form" var="url_floorplannew"/>
+    <spring:url value="/reports/view?list" var="url_reportlist"/>
+    <spring:url value="/quotations/view?setup" var="url_quotationsetup" />
+    <spring:url value="/franchises/view?setup" var="url_franchisesetup"/>
+    <spring:url value="/exceptions/view?setup" var="url_exceptionsetup"/>
+    <spring:url value="/deposits/view?setup" var="url_depositsetup"/>
+    <spring:url value="/flows/view?setup" var="url_flowsetup"/>
+
+    <spring:message code="status_quotation_categorynotmatchunit" var="status_quotation_categorynotmatchunit"/>
+    <spring:message code="status_quotation_lowerthanstandardprice" var="status_quotation_lowerthanstandardprice"/>
+    <spring:message code="status_quotation_servicenotmatchtemplate" var="status_quotation_servicenotmatchtemplate"/>
+    <spring:message code="status_quotation_depositnotpass" var="status_quotation_depositnotpass"/>
+    <spring:message code="status_quotation_watchlist" var="status_quotation_watchlist"/>
+    <spring:message code="status_quotation_blacklist" var="status_quotation_blacklist"/>
+    <spring:message code="status_quotation_changeareasize" var="status_quotation_changeareasize"/>
+
+    <c:set value="danger" var="color_danger" scope="session"></c:set>
+    <c:set value="primary" var="color_primary" scope="session"></c:set>
+    <c:set value="info" var="color_orange" scope="session"></c:set>
+    <c:set value="warning" var="color_info" scope="session"></c:set>
+    <c:set value="success" var="color_success" scope="session"></c:set>
+    <c:set value="default" var="color_default" scope="session"></c:set>
+    <c:set value="material-orange" var="color_orange" scope="session"></c:set>
+    <c:set value="material-orange-200" var="color_orange_200" scope="session"></c:set>
+    <c:set value="material-orange-300" var="color_orange_300" scope="session"></c:set>
+    <c:set value="material-red" var="color_red" scope="session"></c:set>
+    <c:set value="material-red-200" var="color_red_200" scope="session"></c:set>
+    <c:set value="material-red-300" var="color_red_300" scope="session"></c:set>
+    <c:set value="material-red-500" var="color_red_500" scope="session"></c:set>
+    <c:set value="material-pink" var="color_pink" scope="session"></c:set>
+    <c:set value="material-pink-200" var="color_pink_200" scope="session"></c:set>
+    <c:set value="material-pink-300" var="color_pink_300" scope="session"></c:set>
+    <c:set value="material-purple" var="color_purple" scope="session"></c:set>
+    <c:set value="material-purple-200" var="color_purple_200" scope="session"></c:set>
+    <c:set value="material-purple-300" var="color_purple_300" scope="session"></c:set>
+    <c:set value="material-deep-purple" var="color_deep_purple" scope="session"></c:set>
+    <c:set value="material-deep-purple-200" var="color_deep_purple_200" scope="session"></c:set>
+    <c:set value="material-deep-purple-300" var="color_deep_purple_300" scope="session"></c:set>
+    <c:set value="material-indigo" var="color_indigo" scope="session"></c:set>
+    <c:set value="material-indigo-200" var="color_indigo_200" scope="session"></c:set>
+    <c:set value="material-indigo-300" var="color_indigo_300" scope="session"></c:set>
+    <c:set value="material-blue" var="color_blue" scope="session"></c:set>
+    <c:set value="material-blue-200" var="color_blue_200" scope="session"></c:set>
+    <c:set value="material-blue-300" var="color_blue_300" scope="session"></c:set>
+    <c:set value="material-light-blue" var="color_light_blue" scope="session"></c:set>
+    <c:set value="material-light-blue-200" var="color_light_blue_200" scope="session"></c:set>
+    <c:set value="material-light-blue-300" var="color_light_blue_300" scope="session"></c:set>
+    <c:set value="material-cyan" var="color_cyan" scope="session"></c:set>
+    <c:set value="material-cyan-200" var="color_cyan_200" scope="session"></c:set>
+    <c:set value="material-cyan-300" var="color_cyan_300" scope="session"></c:set>
+    <c:set value="material-teal" var="color_teal" scope="session"></c:set>
+    <c:set value="material-teal-200" var="color_teal_200" scope="session"></c:set>
+    <c:set value="material-teal-300" var="color_teal_300" scope="session"></c:set>
+    <c:set value="material-light-green" var="color_light_green" scope="session"></c:set>
+    <c:set value="material-light-green-200" var="color_light_green_200" scope="session"></c:set>
+    <c:set value="material-light-green-300" var="color_light_green_300" scope="session"></c:set>
+    <c:set value="material-green" var="color_green" scope="session"></c:set>
+    <c:set value="material-green-200" var="color_green_200" scope="session"></c:set>
+    <c:set value="material-green-300" var="color_green_300" scope="session"></c:set>
+    <c:set value="material-lime-700" var="color_lime" scope="session"></c:set>
+    <c:set value="material-lime-200" var="color_lime_200" scope="session"></c:set>
+    <c:set value="material-lime-300" var="color_lime_300" scope="session"></c:set>
+    <c:set value="material-yellow-700" var="color_yellow" scope="session"></c:set>
+    <c:set value="material-yellow-200" var="color_yellow_200" scope="session"></c:set>
+    <c:set value="material-yellow-300" var="color_yellow_300" scope="session"></c:set>
+    <c:set value="material-deep-orange" var="color_deep_orange" scope="session"></c:set>
+    <c:set value="material-deep-orange-200" var="color_deep_orange_200" scope="session"></c:set>
+    <c:set value="material-deep-orange-300" var="color_deep_orange_300" scope="session"></c:set>
+    <c:set value="material-grey" var="color_grey" scope="session"></c:set>
+    <c:set value="material-grey-200" var="color_grey_200" scope="session"></c:set>
+    <c:set value="material-grey-300" var="color_grey_300" scope="session"></c:set>
+    <c:set value="material-blue-grey" var="color_blue_grey" scope="session"></c:set>
+    <c:set value="material-blue-grey-200" var="color_blue_grey_200" scope="session"></c:set>
+    <c:set value="material-blue-grey-300" var="color_blue_grey_300" scope="session"></c:set>
+    <c:set value="material-brown" var="color_brown" scope="session"></c:set>
+    <c:set value="material-brown-200" var="color_brown_200" scope="session"></c:set>
+    <c:set value="material-brown-300" var="color_brown_300" scope="session"></c:set>
+    <c:set value="material-light-grey" var="color_light_grey" scope="session"></c:set>
+    <c:set value="material-light-grey-200" var="color_light_grey_200" scope="session"></c:set>
+    <c:set value="material-light-grey-300" var="color_light_grey_300" scope="session"></c:set>
+
+    <c:set value="material-teal-100" var="color_material_teal_100" scope="session"><jsp:text /></c:set>
+    <c:set value="material-teal-200" var="color_material_teal_200" scope="session"><jsp:text /></c:set>
+    <c:set value="material-teal-300" var="color_material_teal_300" scope="session"><jsp:text /></c:set>
+    <c:set value="material-teal-400" var="color_material_teal_400" scope="session"><jsp:text /></c:set>
+    <c:set value="material-teal-500" var="color_material_teal_500" scope="session"><jsp:text /></c:set>
+    <c:set value="material-teal-700" var="color_material_teal_700" scope="session"><jsp:text /></c:set>
+    <c:set value="#00796b" var="color_material_teal_700_css" scope="session"><jsp:text /></c:set>
+
+    <div class="dv-background" style="display: none;">
+        <div class="dv-loading">
+            <spring:url value="/resources/images/scg-hourse-indicator.gif" var="image_loader_url" />
+            <div class="image-contain" style="background-image: url(${image_loader_url}); width:30px;height:30px;">
+                <jsp:text/>
+            </div>
+        </div>
+    </div>
+
+    <!--<style>-->
+        <!--.navbar.navbar .dropdown-menu li > a,-->
+        <!--.navbar-default.navbar .dropdown-menu li > a {-->
+            <!--font-size: 14px;-->
+            <!--padding: 10px 16px;-->
+        <!--}-->
+        <!--.notification-icon {-->
+            <!--color: white;-->
+        <!--}-->
+        <!--.notification-icon .fa {-->
+            <!--font-size: 1.2em;-->
+        <!--}-->
+        <!--.notification-icon .badge {-->
+            <!--top: 8px;-->
+            <!--position: absolute;-->
+        <!--}-->
+        <!--.navbar, .navbar-collapse {-->
+            <!--position: static;-->
+            <!--z-index: 9000;-->
+        <!--}-->
+        <!--.navbar .nav > li {-->
+            <!--z-index: 9000;-->
+        <!--}-->
+    <!--</style>-->
+
+    <!--<div class="navbar navbar-material-red-500" style="height: 10px">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">-->
+                <!--<span class="icon-bar"><jsp:text /></span>-->
+                <!--<span class="icon-bar"><jsp:text /></span>-->
+                <!--<span class="icon-bar"><jsp:text /></span>-->
+            <!--</button>-->
+            <!--<a  style="padding-top: 5%" class="navbar-brand" href="${home}">&lt;!&ndash;<spring:message code="security_login_title" />&ndash;&gt;Pre-Sale Mobility</a>-->
+        <!--</div>-->
+        <!--<div class="navbar-collapse collapse navbar-responsive-collapse" >-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+            <!--<sec:authentication var="principal" property="principal" />-->
+
+            <!--<li class="dropdown">-->
+                <!--<a style="padding-top:5%" href="http://fezvrasta.github.io/bootstrap-material-design/bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">${principal.username}&#160;&#160;${principal.authorities}<span class="fa fa-caret-down"><jsp:text /></span></a>-->
+                <!--<ul class="dropdown-menu" style="padding-top:5%">-->
+                    <!--<sec:authorize access="hasRole('ADMIN')">-->
+                        <!--<li><a href="#" data-toggle="modal" data-target="#_viewas_modal_id"><spring:message code="menu_item_viewas" /></a></li>-->
+                        <!--<li class="divider"><jsp:text/></li>-->
+                    <!--</sec:authorize>-->
+                    <!--<li><a href="#" data-toggle="modal" data-target="#_information_modal_id"><spring:message code="menu_item_information" /></a></li>-->
+                    <!--<li><a href="#" data-toggle="modal" data-target="#_help_modal_id"><spring:message code="menu_item_help" /></a></li>-->
+                    <!--<li><a href="${fn:escapeXml(url_signout)}"><spring:message code="button_signout" /></a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
+                <!--<li>-->
+                    <!--<p class="navbar-text" style="margin-top:10px">-->
+                        <!--<a><img id="lang-th" src="${url_flagth}" alt="th" class="image-nav" title="TH" /></a>-->
+                        <!--&#160;|&#160;-->
+                        <!--<a><img id="lang-en" src="${url_flagen}" alt="en" class="image-nav" title="EN" /></a>-->
+                    <!--</p>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <script type="text/javascript">
+        <![CDATA[
+
+        var session = {
+
+            context: '${pageContext.request.contextPath}',              // the context path
+            lang: "${lang}",                                             // the language is page language (eg. TH, EN)
+            date: new Date(Number("${now.time}")).setHours(0,0,0,0),    // the current date without time
+            time: new Date(Number("${now.time}")),                      // the current date with time
+//            id: "${userId}",                                            // the session user id
+            user: "${user}"                                        // the session user without domain name (ex. jirapolp)
+//            nameThai: "${nameThai}",                                    // the session nameThai
+//            nameEng: "${nameEng}",                                      // the session nameEng
+//            full: "${fullUsername}",                                    // the session user with domain name (ex. jirapolp@mitrphol.co.th)
+//            role: "${userRole}".replace('[', '').replace(']', ''),      // the session user role
+//            attorney: "${attorneyId}",                                  // the session attorney id
+//            other: [],                                                  // the other use for create request for other
+//            document: [],                                               // the document use for mess action
+//            context: '/' + (window.location.pathname.split('/')[1]),    // the context path
+//            shifts: JSON.parse('${shifts}'),                            // the json object list
+//            timeout: parseInt("${menus.timeout}"==''?10:"${menus.timeout}") * 60    // the session time (second unit)
+        };
+
+        var quotationStatus = {
+            1: '<span class="label badge-color btn-material-red-100" title="${status_quotation_categorynotmatchunit}">&nbsp;</span>',
+            2: '<span class="label badge-color btn-material-pink-100" title="${status_quotation_lowerthanstandardprice}">&nbsp;</span>',
+            3: '<span class="label badge-color btn-material-purple-100" title="${status_quotation_servicenotmatchtemplate}">&nbsp;</span>',
+            4: '<span class="label badge-color btn-material-green-100" title="${status_quotation_depositnotpass}">&nbsp;</span>',
+            5: '<span class="label badge-color btn-material-yellow-100" title="${status_quotation_watchlist}">&nbsp;</span>',
+            6: '<span class="label badge-color btn-material-brown-100" title="${status_quotation_blacklist}">&nbsp;</span>',
+            7: '<span class="label badge-color btn-material-gray-100" title="${status_quotation_changeareasize}">&nbsp;</span>'};
+
+            var variableconstraints = {
+                requestTypeCodeDW: 'DW', 
+                requestTypeCodeAW: 'AW',   
+                requestTypeCodeSB: 'SB',
+                requestTypeCodeTC: 'TC',
+                statusRewait: '07',
+                statusReject: '03',
+                statusCancel: '04',
+                statusComplete: '08',
+                statusApprove: '02',
+                statusSubmit: '06',
+                requestStatus: 'Reject',
+                statusRewait: '07',
+                requestApproverStatus_Accept: 'Accept',
+                requestApproverStatus_Submit: 'Submit',
+                checkStatus:'Y'       //check status requestMessage
+
+            };
+
+
+
+
+
+        $(document).ready(function() {
+
+            $.material.init();
+
+            // Change Language
+            $('.image-nav').click(function() {
+                URLUtil.changeLanguage($(this).attr('alt'));
+            });
+
+            // Check Menu State
+            $('#menu-toggle').on('click', function() {
+                $('#wrapper').hasClass('toggled') ? localStorage.setItem("menuVisible", 'false') : localStorage.setItem("menuVisible", 'true');
+            });
+
+            // Bind State Menu
+            localStorage.getItem("menuVisible") == 'true' ? $('#wrapper').addClass('toggled') : $('#wrapper').removeClass('toggled');
+
+            //localStorage.setItem(
+
+        });
+
+        ]]>
+    </script>
+
+</div> 

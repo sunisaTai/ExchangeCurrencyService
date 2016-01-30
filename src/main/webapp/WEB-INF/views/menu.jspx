@@ -1,0 +1,238 @@
+<div id="menu" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+     xmlns:spring="http://www.springframework.org/tags" xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:sec="http://www.springframework.org/security/tags">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <jsp:text/>
+    </menu:menu>
+
+    <!-- Setup -->
+    <!--<spring:url value="/" var="url_home" />-->
+    <!--<spring:url value="/appparameters/view?setup" var="url_parameter_setup"/>-->
+    <!--<spring:url value="/appparameters/view?board" var="url_parameter_board"/>-->
+    <!--<spring:url value="/appparameters/view?role" var="url_parameter_role"/>-->
+    <!--<spring:url value="/appparameters/view?user" var="url_parameter_user"/>-->
+    <!--&lt;!&ndash;<spring:url value="/deposits/view?list" var="url_deposit_list"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<spring:url value="/exceptions/view?setup" var="url_exception_setup"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<spring:url value="/floorplans/view?form" var="url_floorplan_validate"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<spring:url value="/quotations/view?item" var="url_quotation_item"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<spring:url value="/flows/view?list" var="url_flow_list"/>&ndash;&gt;-->
+    <!--&lt;!&ndash; Customer &ndash;&gt;-->
+    <!--<spring:url value="/customers/view?list" var="url_customer_list"/>-->
+    <!--&lt;!&ndash; Quotation &ndash;&gt;-->
+    <!--<spring:url value="/quotations/view/quotation?list" var="url_quotation_list"/>-->
+    <!--<spring:url value="/quotations/view?floorplan" var="url_quotation_create"/>-->
+    <!--&lt;!&ndash; Contract &ndash;&gt;-->
+    <!--<spring:url value="/contracts/view?list" var="url_contract_list"/>-->
+    <!--&lt;!&ndash; Auto Renew &ndash;&gt;-->
+    <!--<spring:url value="/autorenews/view?prepare" var="url_autorenew_findPrepare"/>-->
+    <!--<spring:url value="/autorenews/view?list" var="url_autorenew_findList"/>-->
+
+    <!--<style>-->
+        <!--.menu {-->
+        <!--height: 50px;-->
+        <!--left: 249px;-->
+        <!--position: fixed;-->
+        <!--border: none;-->
+        <!--display: block;-->
+        <!--padding-left: 5px;-->
+        <!--padding-right: 5px;-->
+        <!---webkit-transition: all 0.5s ease;-->
+        <!---moz-transition: all 0.5s ease;-->
+        <!---o-transition: all 0.5s ease;-->
+        <!--transition: all 0.5s ease;-->
+        <!--top: 70px;-->
+        <!--border-radius: 0;-->
+        <!--padding: 15px 15px 10px 10px;-->
+        <!--}-->
+
+        <!--#wrapper.toggled .menu {-->
+        <!--left: -1px;-->
+        <!--}-->
+
+        <!--.hoe-has-menu  i,-->
+        <!--.hoe-has-menu span,-->
+        <!--.sidebar-brand h4,-->
+        <!--.hoe-sub-menu li a {-->
+        <!--color: #fff;-->
+        <!--}-->
+
+    <!--</style>-->
+
+    <!--<a id="menu-toggle" href="#menu-toggle" class="btn btn-${color_red_500} menu"><span class="fa fa-ellipsis-v"><jsp:text/></span></a>-->
+
+    <!--<ul class="sidebar-nav">-->
+        <!--<li class="sidebar-brand">-->
+            <!--<a href="${url_home}">-->
+                <!--<h4 style="margin-top: 20px;">Pre-Sale Mobility Menu</h4>-->
+            <!--</a>-->
+        <!--</li>-->
+
+        <!--<sec:authorize access="hasRole('ADMIN')">-->
+            <!--<li class="hoe-has-menu">-->
+                <!--<a>-->
+                    <!--<i class="glyphicon glyphicon-cog">&#160;</i>-->
+                    <!--<span class="menu-text">Set up</span>-->
+                    <!--<span class="fa fa-angle-down pull-right"><jsp:text /></span>-->
+                <!--</a>-->
+                <!--<ul class="hoe-sub-menu">-->
+                    <!--<li><a href="${url_parameter_setup}">Setup Parameter</a></li>-->
+                    <!--<li><a href="${url_parameter_board}">Setup Control Board</a></li>-->
+                    <!--<li><a href="${url_parameter_role}">Setup Role</a></li>-->
+                    <!--<li><a href="${url_parameter_user}">User Maintenance</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
+        <!--</sec:authorize>-->
+    <!--</ul>-->
+
+    <!--&lt;!&ndash;<sec:authorize access="hasRole('SALES_REPRESENTATIVE')">&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Search Item</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">New Item From Scratch</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Search Product</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Search Quotation</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">New Quotation</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">LP Tool</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Check Pending SO</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;</sec:authorize>&ndash;&gt;-->
+    <!--&lt;!&ndash;<sec:authorize access="hasAnyRole('SALES_SECTION_MANAGER,SALES_DEPARTMENT_MANAGER,SALES_DIVISION_MANAGER,STRUCTURAL_DESIGNER,DRAWING_MAN,GRAPHIC_DESIGNER,NEW_PRODUCT_APPROVER_GROUP,SAMPLE_BOX_ROOM,MASTER_CARD_MAKER')">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Search Item</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">New Item From Scratch</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Search Product</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Search Quotation</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">New Quotation</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">LP Tool</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Check Pending SO</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="glyphicon glyphicon-search">&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Delegate Item</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;<ul class="hoe-sub-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<li><a href="${url_parameter_setup}">Setup parameter</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<li><a href="${url_quotation_list}">Menu</a></li>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<li><a href="${url_quotation_list}">Menu</a></li>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<li><a href="${url_quotation_list}">Menu</a></li>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<li><a href="${url_quotation_list}">Menu</a></li>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;<li><a href="${url_quotation_list}">Menu</a></li>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</sec:authorize>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="hoe-has-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<i class="fa fa-users">&#160;&#160;&#160;</i>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="menu-text">Customer</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span class="fa fa-angle-down pull-right"><jsp:text /></span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;<ul class="hoe-sub-menu">&ndash;&gt;-->
+    <!--&lt;!&ndash;<li><a href="${url_quotation_list}">Menu</a></li>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+    <!--<script type="text/javascript">-->
+        <!--<![CDATA[-->
+
+        <!--$(document).ready(function() {-->
+
+            <!--$("#menu-toggle").click(function(e) {-->
+                <!--e.preventDefault();-->
+                <!--$("#wrapper").toggleClass("toggled");-->
+            <!--});-->
+        <!--});-->
+
+        <!--]]>-->
+    <!--</script>-->
+
+</div>

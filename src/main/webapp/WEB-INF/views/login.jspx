@@ -1,0 +1,157 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:url value="/resources/j_spring_security_check" var="form_url"/>
+    <spring:url value="/resources/images/scg-background-2.jpg" var="url_background"/>
+    <spring:url value="/resources/images/scg-logo.png" var="url_scg_logo"/>
+
+    <spring:message code="security_login_title" var="title" htmlEscape="false"/>
+    <spring:message code="label_security_username" var="label_security_username"/>
+    <spring:message code="label_security_password" var="label_security_password"/>
+
+    <style>
+        body {
+            background: url("${url_background}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            /*            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), url(${url_background}) no-repeat 0 0, url(${url_background}) repeat 0 0;
+
+                        background: -moz-linear-gradient(top, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 100%), url(${url_background}) no-repeat 0 0;
+
+                        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.1)), color-stop(100%,rgba(255,255,255,0.1))), url(${url_background}) no-repeat 0 0;
+
+                        background: -webkit-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.1) 100%), url(${url_background}) no-repeat 0 0;
+
+                        background: -o-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.1) 100%), url(${url_background}) no-repeat 0 0;
+
+                        background: -ms-linear-gradient(top, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.1) 100%), url(${url_background}) no-repeat 0 0;
+
+                        background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.1) 100%), url(${url_background}) no-repeat 0 0;*/
+
+        }
+
+        .navbar-footer-description{
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+46,cccccc+100 */
+            background: #eeeeee; /* Old browsers */
+            background: -moz-linear-gradient(top,  #eeeeee 46%, #cccccc 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(46%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #eeeeee 46%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #eeeeee 46%,#cccccc 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #eeeeee 46%,#cccccc 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  #eeeeee 46%,#cccccc 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+        }
+
+    </style>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-4" style="display: none" id="container_login">
+                    <form name="f" action="${fn:escapeXml(form_url)}" method="POST" role="form" style="margin-top: 30%;">
+                        <div class="">
+                            <ul class="media-list">
+                                <li class="media">
+                                    <!-- <div class="media-left">
+                                         <a href="#">
+                                             <img class="" src="${url_scg_logo}" />
+                                         </a>
+                                     </div>-->
+                                    <!--        <div class="media-body">
+                                                <h1 class="text-eng">SCG  Packaging</h1>
+                                            </div>-->
+                                </li>
+                            </ul>
+                            <!--<h2 class="text-eng">&#160;&#160;&#160;&#160;&#160;<spring:message code="security_login_title" /></h2>-->
+                        </div>
+                        <br/>
+                        <div class="well" style="border:10px solid #ECF0F1;border-radius: 2%">
+                            <div class="alert alert-danger alert-dismissible" role="alert" id="_alert_login_fail_id" style="display: none;">
+                                <button type="button" class="close" data-dismiss="alert"><span class="fa fa-times"><jsp:text/></span><span class="sr-only"><spring:message code="button_closewindow" /></span></button>
+                                <spring:message code="security_login_unsuccessful"/><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="j_username"><c:out value="${label_security_username}" /></label>
+                                <input id="j_username" class="form-control" type="text" name="j_username" autocomplete="off" placeholder="${label_security_username}" required="true"/>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="sr-only" for="j_password"><c:out value="${label_security_password}" /></label>
+                                <input id="j_password" class="form-control" type="password" name="j_password" autocomplete="off" placeholder="${label_security_password}" required="true"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-material-red-500 btn-raised" id="submit_button"><spring:message code="button_signin" /></button>
+                            </div>
+                            <div class="form-group">
+                                <p class="text-muted"><a href="#" data-toggle="modal" data-target="#_modal_forgot_password_id"><spring:message code="message_global_title_forgotpassword" /></a></p>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col-sm-7">
+                    <jsp:text/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="_modal_forgot_password_id" tabindex="-1" role="dialog" aria-labelledby="_modal_forgot_password_id" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="page-header">
+                        <h4 class="modal-title"><span class="fa fa-exclamation-triangle text-warning">&#160;&#160;&#160;</span><spring:message code="message_global_title_forgotpassword" /></h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p><spring:message code="message_global_body_forgotpassword" /></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"><spring:message code="button_closewindow" /></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        <![CDATA[
+
+        var $altLoginFail = $('#_alert_login_fail_id'),
+                $txtUsername = $('#j_username'),
+                $divWrapper = $('#wrapper'),
+                $divContainerLogin = $('#container_login'),
+                $divSlideBar = $('#sidebar-wrapper');
+
+        $(document).ready(function () {
+
+            $(".navbar-fixed-bottom").fadeIn(1200);
+
+            $divContainerLogin.fadeIn(1200);
+
+            // Init Effect Material
+            $.material.init();
+
+            // Remove Menu Panel Left
+            $divWrapper.attr('id', '');
+            $divSlideBar.remove();
+
+            // Display alert when login fail
+            if (URLUtil.getParameterValue('login_error') == 'password' || URLUtil.getParameterValue('login_error') == 't') $altLoginFail.show();
+
+            // Focus Filed Username
+            $txtUsername.focus();
+
+        });
+
+        ]]>
+    </script>
+
+</div>
+

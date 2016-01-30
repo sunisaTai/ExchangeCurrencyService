@@ -1,0 +1,60 @@
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-01-29 09:30:06
+persistence setup --provider HIBERNATE --database DERBY_EMBEDDED
+entity jpa --class ~base.BaseEntity --abstract --mappedSuperclass --activeRecord 
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-01-29 09:56:36
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-01-29 10:11:19
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-01-29 10:11:35
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-01-30 13:17:13
+entity jpa --class ~.domain.exc.Bank --extends ~.base.BaseEntity --testAutomatically --inheritanceType TABLE_PER_CLASS
+field string --fieldName bank_Name
+field string --fieldName code
+entity jpa --class ~.domain.exc.DateForExchange --extends ~.base.BaseEntity --testAutomatically --inheritanceType TABLE_PER_CLASS
+entity jpa --class ~.domain.Bank --extends ~.base.BaseEntity --testAutomatically --inheritanceType TABLE_PER_CLASS
+field string --fieldName bank_Name
+field string --fieldName code
+entity jpa --class ~.domain.DateForExchange --extends ~.base.BaseEntity --testAutomatically --inheritanceType TABLE_PER_CLASS
+field date --fieldName datePerExchange --type java.util.Date
+entity jpa --class ~.domain.Currency --extends ~.base.BaseEntity --testAutomatically --inheritanceType TABLE_PER_CLASS
+field string --fieldName currency_Name
+field string --fieldName symbol
+field string --fieldName code
+entity jpa --class ~.domain.ExchangeCurrency --extends ~.base.BaseEntity --testAutomatically --inheritanceType TABLE_PER_CLASS
+field number --fieldName exchange_Rates --type java.lang.float
+// [failed] field reference --fieldName bank --type ~.domain.exc.Bank --cardinality MANY_TO_ONE --joinColumnName bank --fetch LAZY
+field reference --fieldName bank --type ~.domain.Bank --cardinality MANY_TO_ONE --joinColumnName bank --fetch LAZY
+focus --class ~.domain.Bank
+field set --fieldName exchangeCurrency --type ~.domain.ExchangeCurrency --cardinality ONE_TO_MANY --fetch LAZY --mappedBy bank
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-01-30 13:22:11
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-01-30 13:22:33
+focus --class ~.domain.ExchangeCurrency
+field reference --fieldName dateForExchange --type ~.domain.DateForExchange --cardinality MANY_TO_ONE --joinColumnName date --fetch LAZY
+focus --class ~.domain.DateForExchange
+field set --fieldName exchangeCurrency --type ~.domain.ExchangeCurrency --cardinality ONE_TO_MANY --fetch LAZY --mappedBy date
+// [failed] focus --class ~.domain.exc.ExchangeCurrency
+focus --class ~.domain.ExchangeCurrency
+field reference --fieldName currency --type ~.domain.Currency --cardinality MANY_TO_ONE --joinColumnName currency --fetch LAZY
+focus --class ~.domain.Currency
+field set --fieldName exchangeCurrency --type ~.domain.ExchangeCurrency --cardinality ONE_TO_MANY --fetch LAZY --mappedBy currency
+json all --deepSerialize
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-01-30 13:25:49
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-01-30 13:30:23
+// [failed] web mvc all --package ~.controller
+web mvc json all
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-01-30 13:30:48
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-01-30 13:47:56
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-01-30 13:48:56
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-01-30 13:55:27
+focus --class ~.base.BaseEntity
+field string createdBy
+field string updatedBy
+field string status
+field date --fieldName createdDate --type java.util.Date --dateFormat SHORT --dateTimeFormatPattern "dd/MM/yyyy"
+field date --fieldName updatedDate --type java.util.Date --dateFormat SHORT --dateTimeFormatPattern "dd/MM/yyyy"
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-01-30 13:56:15

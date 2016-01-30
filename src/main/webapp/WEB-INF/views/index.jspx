@@ -1,0 +1,229 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <!--<spring:message var="app_name" code="application_name" htmlEscape="false" />-->
+  <!--<spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />-->
+  <!--<util:panel id="title" title="${title}">-->
+    <!--<h3>-->
+      <!--<spring:message code="welcome_h3" arguments="${app_name}" />-->
+    <!--</h3>-->
+    <!--<p>-->
+      <!--<spring:message code="welcome_text" />-->
+    <!--</p>-->
+  <!--</util:panel>-->
+
+    <spring:url value="/resources/images/eprop-menu-autorenew.png" var="url_autorenew"/>
+    <spring:url value="/quotations/view?form" var="url_quotation_create"/>
+    <spring:url value="/resources/images/scg-packing-1.jpg" var="url_scg_packing_1"/>
+    <spring:url value="/resources/images/scg-packing-2.jpg" var="url_scg_packing_2"/>
+    <spring:url value="/resources/images/scg-packing-3.jpg" var="url_scg_packing_3"/>
+    <spring:url value="/resources/images/scg-packing-4.jpg" var="url_scg_packing_4"/>
+    <spring:url value="/resources/images/scg-packing-5.jpg" var="url_scg_packing_5"/>
+    <spring:url value="/resources/images/scg-packing-6.jpg" var="url_scg_packing_6"/>
+
+    <style>
+        .badge-color {
+            border: none;
+            margin-right: 2px;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(0,0,0,0.2);
+        }
+    </style>
+
+    <div class="container-fluid">
+        <!--<br/>-->
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="thumbnail" style="padding: 0;display: none">
+                    <!-- colored -->
+                    <div class="ih-item square colored effect7">
+                        <a href="#">
+                            <div class="img">
+                                <img src="${url_scg_packing_1}" alt="img"/>
+                            </div>
+                            <div class="info">
+                                <h3>Heading here</h3>
+                                <p>Description goes here</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end colored -->
+                    <div class="caption" style="display: none">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            <button class="btn btn-material-red-500 btn-raised btn-block">Project One</button>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail" style="padding: 0;display: none">
+                    <!-- colored -->
+                    <div class="ih-item square colored effect7">
+                        <a href="#">
+                            <div class="img">
+                                <img src="${url_scg_packing_2}" alt="img"/>
+                            </div>
+                            <div class="info">
+                                <h3>Heading here</h3>
+                                <p>Description goes here</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end colored -->
+                    <div class="caption" style="display: none">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            <button class="btn btn-material-red-500 btn-raised btn-block">Project Two</button>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail" style="padding: 0;display: none">
+                    <!-- colored -->
+                    <div class="ih-item square colored effect7">
+                        <a href="#">
+                            <div class="img">
+                                <img src="${url_scg_packing_3}" alt="img"/>
+                            </div>
+                            <div class="info">
+                                <h3>Heading here</h3>
+                                <p>Description goes here</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end colored -->
+                    <div class="caption" style="display: none">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            <button class="btn btn-material-red-500 btn-raised btn-block">Project Three</button>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="thumbnail" style="padding: 0;display: none">
+                    <!-- colored -->
+                    <div class="ih-item square colored effect7">
+                        <a href="#">
+                            <div class="img">
+                                <img src="${url_scg_packing_4}" alt="img"/>
+                            </div>
+                            <div class="info">
+                                <h3>Heading here</h3>
+                                <p>Description goes here</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end colored -->
+                    <div class="caption" style="display: none">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            <button class="btn btn-material-red-500 btn-raised btn-block">Project Four</button>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail" style="padding: 0;display: none">
+                    <!-- colored -->
+                    <div class="ih-item square colored effect7">
+                        <a href="#">
+                            <div class="img">
+                                <img src="${url_scg_packing_5}" alt="img"/>
+                            </div>
+                            <div class="info">
+                                <h3>Heading here</h3>
+                                <p>Description goes here</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end colored -->
+                    <div class="caption" style="display: none">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            <button class="btn btn-material-red-500 btn-raised btn-block">Project Five</button>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail" style="padding: 0;display: none">
+                    <!-- colored -->
+                    <div class="ih-item square colored effect7">
+                        <a href="#">
+                            <div class="img">
+                                <img src="${url_scg_packing_6}" alt="img"/>
+                            </div>
+                            <div class="info">
+                                <h3>Heading here</h3>
+                                <p>Description goes here</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end colored -->
+                    <div class="caption" style="display: none">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                            <button class="btn btn-material-red-500 btn-raised btn-block">Project Five</button>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <!-- normal -->
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        <![CDATA[
+
+        var $divScroll = $('.slimScroll'),
+                $divQuotationList = $('#_quotation_request_list_id');
+
+        var $tableQuotation = $('#_quotation_table_id'),
+                $rowTableQuotation = $tableQuotation.find('.hidden'),
+                $txtQuotationAmount = $('.quotation-amount');
+
+        var $tableContract = $('#_contract_table_id'),
+                $rowTableContract = $tableContract.find('.hidden'),
+                $txtContractAmount = $('.contract-amount');
+
+        var $tableAutorenew = $('#_autorenew_table_id'),
+                $rowTableAutorenew = $tableAutorenew.find('.hidden'),
+                $txtAutorenewAmount = $('.autorenew-amount');
+
+        function initialScrollbar() {
+            // Initial scrollbar
+            $divScroll.each(function (index) {
+                scroll.useSlimScroll($divScroll[index], {
+                    'wrapperClass': 'scroll-wrapper unselectable mac',
+                    'scrollBarContainerClass': 'scrollBarContainer',
+                    'scrollBarContainerSpecialClass': 'animate',
+                    'scrollBarClass': 'scroll',
+                    'keepFocus': true
+                });
+            });
+        }
+
+        $(document).ready(function () {
+
+            $(".thumbnail").fadeIn(1200,function(){
+                $(".caption").slideDown(500);
+            });
+
+        });
+
+        ]]>
+    </script>
+</div>
