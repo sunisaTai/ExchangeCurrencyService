@@ -1,0 +1,8 @@
+@font-face {
+    font-family: BoonJot;
+    src: url('../fonts/BoonJot-400.ttf') format('truetype');
+}
+
+h1,h2,h3,h4,h5,span,p,a{
+    font-family: "BoonJot",sans-serif;
+}
