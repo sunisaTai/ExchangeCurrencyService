@@ -35,4 +35,12 @@ public class ExchangeCurrency extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "currency")
     private Currency currency;
+
+    /**
+     */
+    private String type_code;
+
+    /**
+     */
+    private String type_name;
 }
