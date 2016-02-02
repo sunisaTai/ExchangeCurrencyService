@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="public" name="banks/bank">
+        <put-attribute name="body" value="/WEB-INF/views/excService/bank.jspx"/>
+    </definition>
+    <definition extends="public" name="currencys/currency">
+        <put-attribute name="body" value="/WEB-INF/views/excService/currency.jspx"/>
+    </definition>
+    <definition extends="public" name="dateForExchanges/dateForExchange">
+        <put-attribute name="body" value="/WEB-INF/views/excService/dateForExchange.jspx"/>
+    </definition>
+    <definition extends="public" name="exchangeCurrencys/exchangeCurrency">
+        <put-attribute name="body" value="/WEB-INF/views/excService/exchangeCurrency.jspx"/>
+    </definition>
+</tiles-definitions>
