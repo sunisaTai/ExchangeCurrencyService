@@ -11,7 +11,6 @@ import org.springframework.roo.addon.json.RooJson;
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord(inheritanceType = "TABLE_PER_CLASS")
-@RooJson(deepSerialize = true)
 public class ExchangeCurrency extends BaseEntity {
 
     /**
@@ -34,7 +33,7 @@ public class ExchangeCurrency extends BaseEntity {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "currency")
-    private Currency currency;
+    public Currency currency;
 
     /**
      */

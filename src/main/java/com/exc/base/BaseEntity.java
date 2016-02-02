@@ -11,7 +11,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord(mappedSuperclass = true)
-@RooJson(deepSerialize = true)
 public abstract class BaseEntity {
 
     /**
