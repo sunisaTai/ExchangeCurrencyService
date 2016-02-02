@@ -42,4 +42,20 @@ privileged aspect ExchangeCurrency_Roo_JavaBean {
         this.currency = currency;
     }
     
+    public String ExchangeCurrency.getType_code() {
+        return this.type_code;
+    }
+    
+    public void ExchangeCurrency.setType_code(String type_code) {
+        this.type_code = type_code;
+    }
+    
+    public String ExchangeCurrency.getType_name() {
+        return this.type_name;
+    }
+    
+    public void ExchangeCurrency.setType_name(String type_name) {
+        this.type_name = type_name;
+    }
+    
 }
