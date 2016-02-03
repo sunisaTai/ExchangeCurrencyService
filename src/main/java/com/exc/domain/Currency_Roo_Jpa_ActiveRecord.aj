@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Currency_Roo_Jpa_ActiveRecord {
     
-    public static final List<String> Currency.fieldNames4OrderClauseFilter = java.util.Arrays.asList("currency_Name", "symbol", "code", "exchangeCurrency");
+    public static final List<String> Currency.fieldNames4OrderClauseFilter = java.util.Arrays.asList("currency_Name", "symbol", "code", "exchangeCurrency", "image_name");
     
     public static long Currency.countCurrencys() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Currency o", Long.class).getSingleResult();

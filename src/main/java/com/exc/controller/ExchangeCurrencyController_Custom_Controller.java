@@ -10,8 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("/exchangeCurrencys")
@@ -20,14 +22,17 @@ public class ExchangeCurrencyController_Custom_Controller {
     @Autowired
     ExchangeCurrencyService exchangeCurrencyService;
 
-    @RequestMapping(value = "/findAll",method = RequestMethod.GET,headers = "Accept=application/json")
-    public ResponseEntity<String> findAll(){
+    @RequestMapping(value = "/findExchangeCurrencyByDate",method = RequestMethod.GET,headers = "Accept=application/json")
+    public ResponseEntity<String> findExchangeCurrencyByDate(@RequestParam(value = "date", required = false)String str_date) throws Exception{
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        List<ExchangeCurrency> result = exchangeCurrencyService.findAll();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = format.parse(str_date);
+        List<ExchangeCurrency> result = exchangeCurrencyService.findExchangeCurrencyByDate(date);
         return new ResponseEntity<String>((new JSONSerializer().exclude("*.class")
                 .include("id")
-                .include("exchange_Rates")
+                .include("buy_rate")
+                .include("sell_rate")
                 .include("type_code")
                 .include("type_name")
                 .include("bank.id")

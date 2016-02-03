@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Bank_Roo_Jpa_ActiveRecord {
     
-    public static final List<String> Bank.fieldNames4OrderClauseFilter = java.util.Arrays.asList("bank_Name", "code", "exchangeCurrency");
+    public static final List<String> Bank.fieldNames4OrderClauseFilter = java.util.Arrays.asList("bank_Name", "code", "exchangeCurrency", "image_name");
     
     public static long Bank.countBanks() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Bank o", Long.class).getSingleResult();

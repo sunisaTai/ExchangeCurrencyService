@@ -10,14 +10,6 @@ import com.exc.domain.ExchangeCurrency;
 
 privileged aspect ExchangeCurrency_Roo_JavaBean {
     
-    public Float ExchangeCurrency.getExchange_Rates() {
-        return this.exchange_Rates;
-    }
-    
-    public void ExchangeCurrency.setExchange_Rates(Float exchange_Rates) {
-        this.exchange_Rates = exchange_Rates;
-    }
-    
     public Bank ExchangeCurrency.getBank() {
         return this.bank;
     }
@@ -42,20 +34,20 @@ privileged aspect ExchangeCurrency_Roo_JavaBean {
         this.currency = currency;
     }
     
-    public String ExchangeCurrency.getType_code() {
-        return this.type_code;
+    public Float ExchangeCurrency.getBuy_rate() {
+        return this.buy_rate;
     }
     
-    public void ExchangeCurrency.setType_code(String type_code) {
-        this.type_code = type_code;
+    public void ExchangeCurrency.setBuy_rate(Float buy_rate) {
+        this.buy_rate = buy_rate;
     }
     
-    public String ExchangeCurrency.getType_name() {
-        return this.type_name;
+    public Float ExchangeCurrency.getSell_rate() {
+        return this.sell_rate;
     }
     
-    public void ExchangeCurrency.setType_name(String type_name) {
-        this.type_name = type_name;
+    public void ExchangeCurrency.setSell_rate(Float sell_rate) {
+        this.sell_rate = sell_rate;
     }
     
 }

@@ -27,4 +27,8 @@ public class Bank extends BaseEntity {
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "bank")
     private Set<ExchangeCurrency> exchangeCurrency = new HashSet<ExchangeCurrency>();
+
+    /**
+     */
+    private String image_name;
 }

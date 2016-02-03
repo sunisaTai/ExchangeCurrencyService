@@ -41,4 +41,12 @@ privileged aspect Currency_Roo_JavaBean {
         this.exchangeCurrency = exchangeCurrency;
     }
     
+    public String Currency.getImage_name() {
+        return this.image_name;
+    }
+    
+    public void Currency.setImage_name(String image_name) {
+        this.image_name = image_name;
+    }
+    
 }

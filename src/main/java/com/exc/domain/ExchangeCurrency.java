@@ -15,10 +15,6 @@ public class ExchangeCurrency extends BaseEntity {
 
     /**
      */
-    private Float exchange_Rates;
-
-    /**
-     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bank")
     private Bank bank;
@@ -37,9 +33,9 @@ public class ExchangeCurrency extends BaseEntity {
 
     /**
      */
-    private String type_code;
+    private Float buy_rate;
 
     /**
      */
-    private String type_name;
+    private Float sell_rate;
 }
