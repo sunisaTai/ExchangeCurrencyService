@@ -3,5 +3,36 @@
      xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:form="http://www.springframework.org/tags/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
-Bank
+	<spring:url value="/resources/scripts/excService/bank.js" var="bank"/>
+	<script src="${bank}" type="text/javascript"><!--Not Empty --></script>
+	<div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					<h3>BANK</h3>
+					
+					
+            </div>
+        </div>
+    </div>
 </div>

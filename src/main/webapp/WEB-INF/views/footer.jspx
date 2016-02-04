@@ -35,7 +35,7 @@
     <!--</a>-->
   <!--</span>-->
 
-    <nav class="navbar navbar-material-grey-300 navbar-fixed-bottom navbar-footer-description" style="display: none;height: 80px">
+    <!-- <nav class="navbar navbar-material-grey-300 navbar-fixed-bottom navbar-footer-description" style="display: none;height: 80px">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
@@ -47,7 +47,39 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav> -->
+
+    <spring:url value="/resources/images/money-tree-coins.png" var="moneyTree"/>
+    <style>
+      .headText{
+        text-indent: 50px;
+      }
+    </style>
+
+      <footer class="page-footer yellow darken-2">
+        <div class="container">
+          <div class="row">
+
+            <div class="col l6 s12">
+              <h5 class="white-text">Management Data</h5>
+              <p class="grey-text text-lighten-4 headText">เป็นหน้าสำหรับให้ผู้ดูแลระบบทำการจัดการข้อมูล โดยการ เพิ่มข้อมูล อัพเดท ข้อมูล และลบข้อมูล</p>
+
+            </div>
+
+            <div class="col l6 s12" id="img-footer" align="right">
+              <img src="${moneyTree}" style="height: 120px"><jsp:text/></img>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="footer-copyright yellow darken-4">
+          <div class="container">
+              <p class="grey-text text-lighten-4" style="margin-top: 0">© Made by Mr.Korrakote Manastrong and Ms.Sunisa Noomprasert</p>
+          </div>
+        </div>
+
+    </footer>
 
     <script type="text/javascript">
         <![CDATA[
