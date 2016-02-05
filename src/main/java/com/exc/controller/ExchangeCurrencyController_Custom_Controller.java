@@ -3,6 +3,8 @@ package com.exc.controller;
 import com.exc.domain.ExchangeCurrency;
 import com.exc.service.ExchangeCurrencyService;
 import flexjson.JSONSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,8 @@ import java.util.*;
 @RequestMapping("/exchangeCurrencys")
 public class ExchangeCurrencyController_Custom_Controller {
 
+    protected static Logger LOGGER = LoggerFactory.getLogger(ExchangeCurrencyController_Custom_Controller.class);
+
     @Autowired
     ExchangeCurrencyService exchangeCurrencyService;
 
@@ -26,7 +30,7 @@ public class ExchangeCurrencyController_Custom_Controller {
     public ResponseEntity<String> findExchangeCurrencyByDate(@RequestParam(value = "date", required = false)String str_date) throws Exception{
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy",Locale.US);
         Date date = format.parse(str_date);
         List<ExchangeCurrency> result = exchangeCurrencyService.findExchangeCurrencyByDate(date);
         return new ResponseEntity<String>((new JSONSerializer().exclude("*.class")
