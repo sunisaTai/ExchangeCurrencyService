@@ -4,6 +4,8 @@ import com.exc.domain.ExchangeCurrency;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,8 @@ import java.util.List;
 @Repository
 @Transactional
 public class ExchangeCurrencyRepository {
+
+    protected static Logger LOGGER = LoggerFactory.getLogger(ExchangeCurrencyRepository.class);
 
     @PersistenceContext
     private EntityManager em;
