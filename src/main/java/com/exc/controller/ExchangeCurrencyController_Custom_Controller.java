@@ -1,5 +1,6 @@
 package com.exc.controller;
 
+import org.springframework.ui.Model;
 import com.exc.domain.ExchangeCurrency;
 import com.exc.service.ExchangeCurrencyService;
 import flexjson.JSONSerializer;

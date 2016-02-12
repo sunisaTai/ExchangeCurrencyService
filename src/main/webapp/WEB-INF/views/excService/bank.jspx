@@ -3,36 +3,405 @@
      xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:form="http://www.springframework.org/tags/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
+
 	<spring:url value="/resources/scripts/excService/bank.js" var="bank"/>
-	<script src="${bank}" type="text/javascript"><!--Not Empty --></script>
+	<spring:url value="/resources/images/icon-bank" var="iconBank"/>
+	<spring:url value="/resources/images/flagAll" var="iconFlag"/>
+
+	<script>
+		partLoadImage = '${iconBank}';
+		partLoadImageFlag = '${iconFlag}';
+
+		var valueImage = '';
+        function check(id) {
+        	valueImage = id.value
+        }
+    </script>
+	<style type="text/css">
+	
+		.strike {
+	      color: #263238;
+	      display: block;
+	      overflow: hidden;
+	      padding: 55px;
+	      text-align: center;
+	      white-space: nowrap;
+	    }
+
+	    .strike > span {
+	      display: inline-block;
+	      position: relative;
+	    }
+
+	    .strike > span::before, .strike > span::after {
+	      background: #263238 none repeat scroll 0 0;
+	      content: "";
+	      height: 3px;
+	      position: absolute;
+	      top: 50%;
+	      width: 9999px;
+	    }
+
+	    .strike > span::before {
+	      margin-right: 15px;
+	      right: 100%;
+	    }
+
+	    .strike > span::after {
+	      left: 100%;
+	      margin-left: 15px;
+	    }
+
+	    .strike h4 {
+	      margin-bottom: 10px;
+	      margin-top: 10px;
+	    }
+	</style>
+
 	<div class="container">
         <div class="row">
             <div class="col-sm-12">
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					<h3>BANK</h3>
-					
-					
+                <div class="container">
+			      <div class="row">
+			        <div class="col s12">
+			          <div class="strike">
+			            <span>
+			              <h4><b>Exchange Currency Data Management</b></h4>
+			            </span>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+
+					<ul class="collapsible popout" data-collapsible="accordion">
+					    <li>
+					     <div class="collapsible-header" id="collapOne"><i class="large fa fa-university"><jsp:text></jsp:text></i>Bank</div>
+					     <div class="collapsible-body">
+						      	<div class="row">
+						      	 	<div class="col s5">
+
+								      <div class="col s12">
+								        <div class="input-field col s10">
+								         	<input placeholder="Bank Code" id="inputBankCode" type="text" class="validate" />
+          								 	<label for="inputBankCode">Bank Code</label>
+								        </div>
+								       </div>
+
+								       <div class="col s12">
+								        <div class="input-field col s10">
+								          	<input placeholder="Bank Name" id="inputBankName" type="text" class="validate" />
+          								 	<label for="inputBankName">Bank Name</label>
+								        </div>
+								       </div>
+
+								       <div class="col s12">
+											<h5  style="padding-left: 15px;" >Bank Logo</h5>
+									   </div>
+
+								       <div class="col s12">
+
+								        <div class="col s4">
+								        	<p>
+										      <input class="with-gap" name="group1" type="radio" id="test1" value="BANGKOK-1.png" onclick="check(this)" />
+										      <label for="test1"><img class="activator" src="${iconBank}/BANGKOK-1.png"><jsp:text/></img></label>
+										    </p>
+								        </div>
+
+								        <div class="col s4">
+								         	<p>
+										      <input class="with-gap" name="group1" type="radio" id="test2" value="KBANK-1.png" onclick="check(this)"/>
+										      <label for="test2"><img class="activator" src="${iconBank}/KBANK-1.png"><jsp:text/></img></label>
+										    </p>
+								        </div>
+
+										<div class="col s4">
+										  	<p>
+										      <input class="with-gap" name="group1" type="radio" id="test3" value="KTB-1.png" onclick="check(this)" />
+										      <label for="test3"><img class="activator" src="${iconBank}/KTB-1.png"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group1" type="radio" id="test4" value="KRUNGSRI-1.png" onclick="check(this)" />
+										      <label for="test4"><img class="activator" src="${iconBank}/KRUNGSRI-1.png"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+										  	<p>
+										      <input class="with-gap" name="group1" type="radio" id="test5" value="SCB-1.png" onclick="check(this)" />
+										      <label for="test5"><img class="activator" src="${iconBank}/SCB-1.png"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group1" type="radio" id="test6" value="GSB-1.png" onclick="check(this)" />
+										      <label for="test6"><img class="activator" src="${iconBank}/GSB-1.png"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+										 	<p>
+										      <input class="with-gap" name="group1" type="radio" id="test7" value="TMB.png" onclick="check(this)" />
+										      <label for="test7"><img class="activator" src="${iconBank}/TMB.png"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group1" type="radio" id="test8" value="UOB.png" onclick="check(this)" />
+										      <label for="test8"><img class="activator" src="${iconBank}/UOB.png"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group1" type="radio" id="test9" value="CIMB.png" onclick="check(this)" />
+										      <label for="test9"><img class="activator" src="${iconBank}/CIMB.png"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group1" type="radio" id="test10" value="THANACHART-1.png" onclick="check(this)" />
+										      <label for="test10"><img class="activator" src="${iconBank}/THANACHART-1.png"><jsp:text/></img></label>
+										    </p>
+										</div>
+										</div>
+
+										<div class="col s12">
+											<center><a class="waves-effect waves-light btn" id="btnSaveBank"><i class="material-icons left">offline_pin</i>SAVE</a></center>
+										</div>
+
+								    </div>
+
+								    <div class="col s7">
+								    	<div class="col s11 offset-s1" style="padding-left: 20px;">
+										    <table class="highlight" >
+										        <thead>
+										          <tr>
+										              <th><center>No.</center></th>
+										              <th><center>Bank Code</center></th>
+										              <th><center>Bank Name</center></th>
+										              <th><center>Images</center></th>
+										              <th><center><jsp:text></jsp:text></center></th>
+										              <th><center><jsp:text></jsp:text></center></th>
+										          </tr>
+										        </thead>
+										        <tbody id="tableBank">
+										          <jsp:text></jsp:text>
+										        </tbody>
+										    </table>
+									    </div>
+									</div>
+								</div>
+						</div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><i class="large fa fa-flag"><jsp:text></jsp:text></i>Currency</div>
+					      <div class="collapsible-body">
+					      	
+					      	<div class="row">
+						      	 	<div class="col s5">
+
+								      <div class="col s12">
+								        <div class="input-field col s10">
+								         	<input placeholder="Currency Code" id="inputCurrencyCode" type="text" class="validate" />
+          								 	<label for="inputCurrencyCode">Currency Code</label>
+								        </div>
+								       </div>
+
+								       <div class="col s12">
+								        <div class="input-field col s10">
+								          	<input placeholder="Currency Name" id="inputCurrencyName" type="text" class="validate" />
+          								 	<label for="inputCurrencyName">Currency Name</label>
+								        </div>
+								       </div>
+
+								       <div class="col s12">
+											<h5  style="padding-left: 15px;" >National flag</h5>
+									   </div>
+
+								       <div class="col s12">
+
+								        <div class="col s4">
+								        	<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag1" value="au.png" onclick="check(this)"/>
+										      <label for="flag1"><img class="activator" src="${iconFlag}/au.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+								        </div>
+
+								        <div class="col s4">
+								         	<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag2" value="bn.png" onclick="check(this)"/>
+										      <label for="flag2"><img class="activator" src="${iconFlag}/bn.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+								        </div>
+
+										<div class="col s4">
+										  	<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag3" value="ca.png" onclick="check(this)" />
+										      <label for="flag3"><img class="activator" src="${iconFlag}/ca.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag4" value="ch.png" onclick="check(this)" />
+										      <label for="flag4"><img class="activator" src="${iconFlag}/ch.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+										  	<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag5" value="cn.png" onclick="check(this)" />
+										      <label for="flag5"><img class="activator" src="${iconFlag}/cn.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag6" value="dk.png" onclick="check(this)" />
+										      <label for="flag6"><img class="activator" src="${iconFlag}/dk.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+										 	<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag7" value="eu.png" onclick="check(this)" />
+										      <label for="flag7"><img class="activator" src="${iconFlag}/eu.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag8" value="hk.png" onclick="check(this)" />
+										      <label for="flag8"><img class="activator" src="${iconFlag}/hk.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag9" value="id.png" onclick="check(this)" />
+										      <label for="flag9"><img class="activator" src="${iconFlag}/id.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag10" value="in.png" onclick="check(this)" />
+										      <label for="flag10"><img class="activator" src="${iconFlag}/in.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag11" value="jp.png" onclick="check(this)" />
+										      <label for="flag11"><img class="activator" src="${iconFlag}/jp.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag12" value="my.png" onclick="check(this)" />
+										      <label for="flag12"><img class="activator" src="${iconFlag}/my.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag13" value="no.png" onclick="check(this)" />
+										      <label for="flag13"><img class="activator" src="${iconFlag}/no.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag14" value="nz.png" onclick="check(this)" />
+										      <label for="flag14"><img class="activator" src="${iconFlag}/nz.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag15" value="ph.png" onclick="check(this)" />
+										      <label for="flag15"><img class="activator" src="${iconFlag}/ph.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag16" value="se.png" onclick="check(this)" />
+										      <label for="flag16"><img class="activator" src="${iconFlag}/se.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag17" value="sg.png" onclick="check(this)" />
+										      <label for="flag17"><img class="activator" src="${iconFlag}/sg.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag18" value="uk.png" onclick="check(this)" />
+										      <label for="flag18"><img class="activator" src="${iconFlag}/uk.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag19" value="us.png" onclick="check(this)" />
+										      <label for="flag19"><img class="activator" src="${iconFlag}/us.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
+										</div>
+
+										<div class="col s12">
+											<center><a class="waves-effect waves-light btn" id="btnSaveCurrency"><i class="material-icons left">offline_pin</i>SAVE</a></center>
+										</div>
+
+								    </div>
+
+									<div class="col s7">
+								    	<div class="col s11 offset-s1" style="padding-left: 20px;">
+										    <table class="highlight" >
+										        <thead>
+										          <tr>
+										              <th><center>No.</center></th>
+										              <th><center>Currency Code</center></th>
+										              <th><center>Currency Name</center></th>
+										              <th><center>National flag</center></th>
+										              <th><center><jsp:text></jsp:text></center></th>
+										              <th><center><jsp:text></jsp:text></center></th>
+										          </tr>
+										        </thead>
+										        <tbody id="tableCurrency">
+										          <jsp:text></jsp:text>
+										        </tbody>
+										    </table>
+									    </div>
+									</div>
+
+								</div>
+
+
+					      </div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><i class="large fa fa-btc"><jsp:text></jsp:text></i>ExchangeCurrency</div>
+					      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+					    </li>
+					 </ul>
+					 <br/><br/><br/><br/><br/><br/>
             </div>
         </div>
     </div>
+
+    <script src="${bank}" type="text/javascript"><!--Not Empty --></script>
+
 </div>

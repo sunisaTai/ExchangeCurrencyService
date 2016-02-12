@@ -61,7 +61,7 @@
           <div class="row">
 
             <div class="col l6 s12">
-              <h5 class="white-text">Management Data</h5>
+              <h5 class="white-text">Exchange Currency Data Management</h5>
               <p class="grey-text text-lighten-4 headText">เป็นหน้าสำหรับให้ผู้ดูแลระบบทำการจัดการข้อมูล โดยการ เพิ่มข้อมูล อัพเดท ข้อมูล และลบข้อมูล</p>
 
             </div>
@@ -80,14 +80,26 @@
         </div>
 
     </footer>
+      <script type="text/javascript">
+    var session = {
 
-    <script type="text/javascript">
-        <![CDATA[
+      context: '${pageContext.request.contextPath}',              // the context path
+      lang: "${lang}",                                             // the language is page language (eg. TH, EN)
+      date: new Date(Number("${now.time}")).setHours(0,0,0,0),    // the current date without time
+      time: new Date(Number("${now.time}")),                      // the current date with time
+//            id: "${userId}",                                            // the session user id
+      user: "${user}"                                        // the session user without domain name (ex. jirapolp)
+//            nameThai: "${nameThai}",                                    // the session nameThai
+//            nameEng: "${nameEng}",                                      // the session nameEng
+//            full: "${fullUsername}",                                    // the session user with domain name (ex. jirapolp@mitrphol.co.th)
+//            role: "${userRole}".replace('[', '').replace(']', ''),      // the session user role
+//            attorney: "${attorneyId}",                                  // the session attorney id
+//            other: [],                                                  // the other use for create request for other
+//            document: [],                                               // the document use for mess action
+//            context: '/' + (window.location.pathname.split('/')[1]),    // the context path
+//            shifts: JSON.parse('${shifts}'),                            // the json object list
+//            timeout: parseInt("${menus.timeout}"==''?10:"${menus.timeout}") * 60    // the session time (second unit)
+    };
+  </script>
 
-        $(document).ready(function() {
-
-        });
-
-        ]]>
-    </script>
 </div>
