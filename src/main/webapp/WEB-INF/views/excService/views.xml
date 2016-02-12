@@ -4,13 +4,4 @@
     <definition extends="public" name="banks/bank">
         <put-attribute name="body" value="/WEB-INF/views/excService/bank.jspx"/>
     </definition>
-    <definition extends="public" name="currencys/currency">
-        <put-attribute name="body" value="/WEB-INF/views/excService/currency.jspx"/>
-    </definition>
-    <definition extends="public" name="dateForExchanges/dateForExchange">
-        <put-attribute name="body" value="/WEB-INF/views/excService/dateForExchange.jspx"/>
-    </definition>
-    <definition extends="public" name="exchangeCurrencys/exchangeCurrency">
-        <put-attribute name="body" value="/WEB-INF/views/excService/exchangeCurrency.jspx"/>
-    </definition>
 </tiles-definitions>

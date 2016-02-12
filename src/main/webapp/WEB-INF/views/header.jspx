@@ -4,6 +4,29 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
 
-    
+    <!-- <spring:url value="/resources/images/headerTemplate.png" var="headerTemplate"/> -->
+    <spring:url value="/resources/images/moneyHeader.jpg" var="moneyHeader"/>
+    <spring:url value="/resources/images/bg.jpeg" var="bg"/>
 
+    <style>
+    #index-banner {
+      background: url("${moneyHeader}") no-repeat center center ;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: 500px;
+    }
+    #idheader{
+    	text-align: center;
+    }
+    </style>
+
+    <div id="index-banner">
+	    <section id="sectionid">
+	        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	        <h1 class="header white-text" id="idheader"><b>Exchange Currency Data Management</b></h1>
+	        <br/><br/>
+	    </section>
+  	</div>
 </div> 
