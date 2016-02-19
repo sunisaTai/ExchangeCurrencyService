@@ -84,7 +84,7 @@ function editBank(id){
 				valueImage = "CIMB.png";
 			}else if(jsondataBank.image_name == "THANACHART-1.png"){
 				$("#test10").prop("checked", true);
-				valueImage = "HANACHART-1.png";
+				valueImage = "THANACHART-1.png";
 			}
 		};
 }

@@ -5,6 +5,8 @@
     <jsp:output omit-xml-declaration="yes" />
 
 	<spring:url value="/resources/scripts/excService/bank.js" var="bank"/>
+	<spring:url value="/resources/scripts/excService/currency.js" var="currency"/>
+	<spring:url value="/resources/scripts/excService/exchangeCurrency.js" var="exchangeCurrency"/>
 	<spring:url value="/resources/images/icon-bank" var="iconBank"/>
 	<spring:url value="/resources/images/flagAll" var="iconFlag"/>
 
@@ -200,7 +202,7 @@
 						</div>
 					    </li>
 					    <li>
-					      <div class="collapsible-header"><i class="large fa fa-flag"><jsp:text></jsp:text></i>Currency</div>
+					      <div class="collapsible-header" id="collapTwo"><i class="large fa fa-flag"><jsp:text></jsp:text></i>Currency</div>
 					      <div class="collapsible-body">
 					      	
 					      	<div class="row">
@@ -359,6 +361,13 @@
 										    </p>
 										</div>
 
+										<div class="col s4">
+											<p>
+										      <input class="with-gap" name="group2" type="radio" id="flag20" value="th.png" onclick="check(this)" />
+										      <label for="flag20"><img class="activator" src="${iconFlag}/th.png" style="width: 64px; height: 64px;"><jsp:text/></img></label>
+										    </p>
+										</div>
+
 										</div>
 
 										<div class="col s12">
@@ -375,6 +384,7 @@
 										              <th><center>No.</center></th>
 										              <th><center>Currency Code</center></th>
 										              <th><center>Currency Name</center></th>
+										              <th><center>Symbol</center></th>
 										              <th><center>National flag</center></th>
 										              <th><center><jsp:text></jsp:text></center></th>
 										              <th><center><jsp:text></jsp:text></center></th>
@@ -393,8 +403,58 @@
 					      </div>
 					    </li>
 					    <li>
-					      <div class="collapsible-header"><i class="large fa fa-btc"><jsp:text></jsp:text></i>ExchangeCurrency</div>
-					      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+					      <div class="collapsible-header" id="collapThree"><i class="large fa fa-btc"><jsp:text></jsp:text></i>ExchangeCurrency</div>
+					      <div class="collapsible-body">
+								<div class="row">
+						      	 	<div class="col s12">
+
+								      <div class="col s12">
+								        <div class="input-field col s3">
+								         	<input placeholder="Date" id="inputDateForExchangeCurrency" type="text" class="validate" disabled="disabled" />
+          								 	<label for="inputDateForExchangeCurrency">Date</label>
+								        </div>
+								       </div>
+						
+										<div class="col s12">
+					      					<div class="input-field col s12 m6">
+											    <select class="icons" id="selectBank">
+											    <jsp:text></jsp:text>
+											    </select>
+										    	<label>Bank</label>
+										  	</div>
+										</div>
+
+										<div class="col s12">
+									    	<div class="col s10 offset-s1" style="padding-left: 20px;">
+											    <table class="highlight" id="tableAddCurrency">
+											        <thead>
+											          <tr>
+											              <th rowspan="2"><center>No.</center></th>
+											              <th rowspan="2"><center>National flag</center></th>
+											              <th rowspan="2"><center>Currency Name</center></th>
+											              <th rowspan="2"><center>Symbol</center></th>
+											              <th colspan="2" rowspan="1"><center>ExchangeCurrency</center></th>
+											          </tr>
+														<tr>
+											        		<th><center>Sell</center></th>
+											        		<th><center>Buy</center></th>
+											        	</tr>
+											        </thead>
+											        <tbody id="addCurrency">
+											          <jsp:text></jsp:text>
+											        </tbody>
+											    </table>
+										    </div>
+										</div>
+
+										<div class="col s12">
+										<br/><br/><br/><br/>
+											<center><a class="waves-effect waves-light btn" id="btnSaveExchangeCurrency"><i class="material-icons left">offline_pin</i>SAVE</a></center>
+										</div>
+
+								    </div>
+								</div>
+					      </div>
 					    </li>
 					 </ul>
 					 <br/><br/><br/><br/><br/><br/>
@@ -402,6 +462,19 @@
         </div>
     </div>
 
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
     <script src="${bank}" type="text/javascript"><!--Not Empty --></script>
+    <script src="${currency}" type="text/javascript"><!--Not Empty --></script>
+	<script src="${exchangeCurrency}" type="text/javascript"><!--Not Empty --></script>
 
 </div>

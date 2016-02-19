@@ -24,9 +24,4 @@ public class BankServiceImpl implements BankService{
         bankRepository.saveBanks(id,name,code,image);
     }
 
-    // @Override
-    // public void editBanks(Long id,String name,String code,String image){
-    //     bankRepository.editBanks(id,name,code,image);
-    // }
-
 }

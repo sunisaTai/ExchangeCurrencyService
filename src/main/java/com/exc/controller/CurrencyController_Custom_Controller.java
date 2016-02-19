@@ -62,7 +62,7 @@ public class CurrencyController_Custom_Controller {
             if(result == null){
                 return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<String>((new JSONSerializer().include("id").include("bank_Name").include("code").include("image_name").exclude("*").deepSerialize(result)),headers, HttpStatus.OK);
+            return new ResponseEntity<String>((new JSONSerializer().include("id").include("currency_Name").include("symbol").include("code").include("image_name").exclude("*").deepSerialize(result)),headers, HttpStatus.OK);
         }catch (Exception e) {
             LOGGER.error("Error : {}", e);
             return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -70,8 +70,8 @@ public class CurrencyController_Custom_Controller {
         
     }
 
-    @RequestMapping(value = "/saveBanks", method = RequestMethod.POST, headers = "Accept=application/json")
-    public ResponseEntity<String> saveBanks(@RequestParam(value = "id", required = false) Long id,
+    @RequestMapping(value = "/saveCurrencys", method = RequestMethod.POST, headers = "Accept=application/json")
+    public ResponseEntity<String> saveCurrencys(@RequestParam(value = "id", required = false) Long id,
                                             @RequestParam(value = "currency_Name", required = false) String currency_Name,
     										@RequestParam(value = "symbol", required = false) String symbol,
     										@RequestParam(value = "code", required = false) String code,

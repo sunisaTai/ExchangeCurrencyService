@@ -21,4 +21,8 @@ public class ExchangeCurrencyServiceImpl implements ExchangeCurrencyService{
     public List<ExchangeCurrency> findExchangeCurrencyByDate(Date date){
         return exchangeCurrencyRepository.findExchangeCurrencyByDate(date);
     }
+    @Override
+    public void saveExchangeCurrency(String nameBank,String sell,String buy,Long idCurrency){
+        exchangeCurrencyRepository.saveExchangeCurrency(nameBank,sell,buy,idCurrency);
+    }
 }
