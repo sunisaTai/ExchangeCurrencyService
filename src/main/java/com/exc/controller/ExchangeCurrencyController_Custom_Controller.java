@@ -49,4 +49,29 @@ public class ExchangeCurrencyController_Custom_Controller {
                 .deepSerialize(result)),headers, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/saveExchangeCurrency", method = RequestMethod.POST, headers = "Accept=application/json")
+    public ResponseEntity<String> saveExchangeCurrency(@RequestParam(value = "name_Bank", required = false) String name_Bank,
+                                            @RequestParam(value = "currency", required = false) Long id_Currency,
+                                            @RequestParam(value = "sell", required = false) String sell,
+                                            @RequestParam(value = "buy", required = false) String buy) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        String nameBank = null;
+        Long idCurrency = null;
+        String priceSell = null;
+        String priceBuy = null;
+        try {
+            nameBank = (name_Bank == "" || name_Bank == null ? "" : name_Bank);
+            priceSell = (sell == "" || sell == null ? "" : sell);
+            priceBuy = (buy == "" || buy == null ? "" : buy);
+            idCurrency = (id_Currency == null ? null : id_Currency);
+            exchangeCurrencyService.saveExchangeCurrency(nameBank,priceSell,priceBuy,idCurrency);
+
+            return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+        } catch (Exception e) {
+            LOGGER.error("Error : {}", e);
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

@@ -60,25 +60,15 @@ public class BankRepository {
 
     }
 
-    // public void editBanks(Long id,String name,String code,String image) {
-    //     Bank bank = null;
-    //     try{
-    //         bank = findBankById(id);
-    //         bank.setBank_Name(name);
-    //         bank.setCode(code);
-    //         bank.setImage_name(image);
-    //         bank.merge();
-
-    //     }catch(Exception e){
-    //         LOGGER.error("Error : {}", e.getMessage());
-    //         throw new RuntimeException(e);
-    //     }
-
-    // }
-
     public Bank findBankById(Long idBank){
         Criteria criteria = ((Session) em.getDelegate()).createCriteria(Bank.class);
                 criteria.add(Restrictions.eq("id",idBank));
+        Bank result = (Bank)criteria.uniqueResult();
+        return result;
+    }
+    public Bank findBankByNameBank(String nameBank){
+        Criteria criteria = ((Session) em.getDelegate()).createCriteria(Bank.class);
+                criteria.add(Restrictions.eq("bank_Name",nameBank));
         Bank result = (Bank)criteria.uniqueResult();
         return result;
     }

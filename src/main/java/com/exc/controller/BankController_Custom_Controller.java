@@ -101,29 +101,6 @@ public class BankController_Custom_Controller {
         }
     }
 
-    // @RequestMapping(value = "/editBanks", method = RequestMethod.PUT, headers = "Accept=application/json")
-    // public ResponseEntity<String> editBanks(@RequestParam(value = "id") Long id,
-    //                                         @RequestParam(value = "name") String name,
-    //                                         @RequestParam(value = "code") String code,
-    //                                         @RequestParam(value = "image") String image) {
-    //     HttpHeaders headers = new HttpHeaders();
-    //     headers.add("Content-Type", "application/json");
-    //     String nameBank = null;
-    //     String codeBank = null;
-    //     String imageBank = null;
-    //     try {
-    //         nameBank = (name == "" || name == null ? "" : name);
-    //         codeBank = (code == "" || code == null ? "" : code);
-    //         imageBank = (image == "" || image == null ? "" : image);
-    //         bankService.editBanks(id,nameBank,codeBank,imageBank);
-
-    //         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
-    //     } catch (Exception e) {
-    //         LOGGER.error("Error : {}", e);
-    //         return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
-    // }
-
     @RequestMapping(value="/deleteBank/{id}",method = RequestMethod.DELETE,headers="Accept=application/json")
     @ResponseBody
     public ResponseEntity<String> deleteBank(@PathVariable("id")Long id){

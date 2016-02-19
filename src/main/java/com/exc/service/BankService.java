@@ -12,5 +12,4 @@ import java.util.Map.Entry;
  */
 public interface BankService {
 	void saveBanks(Long id,String name,String code,String image);
-	// void editBanks(Long id,String name,String code,String image);
 }
