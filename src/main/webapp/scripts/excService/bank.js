@@ -1,16 +1,52 @@
 
 var idBankEdit;
-
+var jsondataBankAll;
 $("#collapOne").on('click',function(){
 	clearDataBank();
 	loadTableBank();
 });
 
 $("#btnSaveBank").on('click',function(){
-	console.info(" idBankEdit  :   "+idBankEdit);
-	saveBank(idBankEdit);
+	idBankEdit == null || idBankEdit == "" ? idBankEdit = "" : idBankEdit;
+	if ($("#inputBankName").val() != "" || $("#inputBankCode").val() != "") {
+
+		// if(jsondataBankAll != ""){
+
+			// checkDataSame($("#inputBankName").val(),$("#inputBankCode").val());
+		// }else{
+
+			saveBank(idBankEdit);
+		// }
+
+	}else{
+
+		$("#modal1").openModal();
+		$("h4[id=h4Modal]").text("กรุณากรอกข้อมูลให้ครบถ้วน");
+		$("p[id=pModal]").text("");
+		$('#btnOkModal').click(function() {
+			$('#modal1').closeModal();
+		});
+	};
+
 });
 
+/*function checkDataSame(name,code){
+
+	$.each(jsondataBankAll,function(index,item){
+		if(item.code == code && item.bank_Name == name){
+
+			$("#modal1").openModal();
+			$("h4[id=h4Modal]").text("ข้อมูลซ้ำ");
+			$("p[id=pModal]").text("");
+			$('#btnOkModal').click(function() {
+				$('#modal1').closeModal();
+			});
+		}else{			
+			
+			saveBank(idBankEdit);
+		}
+	})
+}*/
 function saveBank(id){
 	var idBank = (id == "" || id == null ? "" : id);
 
@@ -29,6 +65,12 @@ function saveBank(id){
 	        complete: function (xhr) {
 	            if (xhr.readyState == 4) {
 	                if (xhr.status == 201) {
+	                    $("#modal1").openModal();
+				        $("h4[id=h4Modal]").text("บันทึกข้อมูลสำเร็จ");
+				        $("p[id=pModal]").text("");
+				        $('#btnOkModal').click(function() {
+				            $('#modal1').closeModal();
+				        });
 	                    loadTableBank();
 	                    clearDataBank();
 	                    idBankEdit = "";
@@ -90,7 +132,7 @@ function editBank(id){
 }
 function loadTableBank(){
 
-	var jsondataBankAll = $.ajax({
+	jsondataBankAll = $.ajax({
 	        type: "GET",
 	        url: session['context']+'/banks/findAllBank',
 	        async: false
@@ -123,3 +165,4 @@ function clearDataBank() {
 	valueImage = 'BANGKOK-1.png';
 	$("#test1").prop("checked", true);
 }
+
