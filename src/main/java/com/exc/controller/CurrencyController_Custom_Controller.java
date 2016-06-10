@@ -46,7 +46,7 @@ public class CurrencyController_Custom_Controller {
             if(result == null){
                 return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<String>((new JSONSerializer().include("id").include("currency_Name").include("symbol").include("code").include("exchangeCurrency.bank.id").include("exchangeCurrency.bank.bank_Name").include("exchangeCurrency.bank.code").include("exchangeCurrency.id").include("image_name").exclude("*").deepSerialize(result)),headers, HttpStatus.OK);
+            return new ResponseEntity<String>((new JSONSerializer().include("id").include("exchangeCurrency.buy_rate").include("exchangeCurrency.sell_rate").include("currency_Name").include("symbol").include("code").include("exchangeCurrency.bank.id").include("exchangeCurrency.bank.bank_Name").include("exchangeCurrency.bank.code").include("exchangeCurrency.id").include("image_name").exclude("*").deepSerialize(result)),headers, HttpStatus.OK);
         }catch (Exception e) {
             LOGGER.error("Error : {}", e);
             return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
