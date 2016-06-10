@@ -233,6 +233,7 @@ function loadTableCurrency(){
     });
 }
 function deleteCurrency(id){
+	console.log("dalete");
 	var jsonData = $.ajax({
 	        type: "DELETE",
 	        url: session['context']+'/currencys/deleteCurrency/'+id,

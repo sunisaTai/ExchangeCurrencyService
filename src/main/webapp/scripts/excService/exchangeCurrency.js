@@ -35,13 +35,14 @@ function loadDataBank(){
 }
 var jsondataCurrencyAll;
 var nameBank;
+var dataExchangeCurrency = '';
 $("#selectBank").on('change',function(){
 	$("#tableAddCurrency").show();
 	$("#btnSaveExchangeCurrency").show();
 	nameBank = $(".select-dropdown").val();
 	loadTableAddCurrency();
 
-	var dataExchangeCurrency = $.ajax({
+	dataExchangeCurrency = $.ajax({
 		    type: "GET",
 		    headers: {
 		   		Accept: 'application/json'
@@ -128,11 +129,12 @@ function saveExchangeCurrency(){
 	var idExchangeCurrency = "";
 	$.each(jsondataCurrencyAll,function(index,item){
 		$.each(item.exchangeCurrency,function(indexs,items){
-			// if(items){
-			// }
-			idExchangeCurrency = items.id;
+			if(items.bank.bank_Name == $(".select-dropdown").val()){
+				idExchangeCurrency = items.id;
+			}else{
+				idExchangeCurrency = null;
+			}
 		})
-		console.log("nameBank  :  "+nameBank);
 		console.log("idExchangeCurrency  :  "+idExchangeCurrency);
 		 var jsondata = $.ajax({
 	        type: "POST",
