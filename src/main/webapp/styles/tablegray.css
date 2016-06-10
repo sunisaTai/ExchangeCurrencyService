@@ -1,0 +1,33 @@
+.trgray{
+    background-color: #d7d7da;
+}
+
+.tdcenter{
+    text-align: center;
+}
+
+.tdleft{
+    text-align: left;
+}
+
+.tdright{
+    text-align: right;
+}
+
+.tdflagactivered{
+    text-align: left;
+    color: #ff0000;
+}
+
+.tdflagactivegreen{
+    text-align: left;
+    color: #009933;
+}
+
+.trwhite{
+    background-color: #ffffff;
+}
+
+.trlightgray{
+    background-color: #f2f2f2;
+}

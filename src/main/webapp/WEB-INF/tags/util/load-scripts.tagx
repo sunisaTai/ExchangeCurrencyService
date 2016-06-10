@@ -23,6 +23,7 @@
   <link rel="stylesheet" type="text/css" href="${common_url}" />
   <link rel="stylesheet" type="text/css" href="${fontAwesome_css_url}" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <spring:url value="/resources/styles/bootstrap.min.css" var="bootstrap_css_url" />
 
   <!-- Get the user local from the page context (it was set by Spring MVC's locale resolver) -->
   <c:set var="userLocale">

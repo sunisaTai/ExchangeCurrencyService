@@ -9,9 +9,6 @@ body,div,td {
 body {
 	background-color: #fff;
 	text-align: center;
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
 }
 
 #header {
@@ -27,7 +24,7 @@ body {
 
 	/* fix max-width incompatibility in IE6 */
 	width:expression(document.body.clientWidth > 800? "800px": "auto" );
-
+	
 	overflow:hidden;
 	display:block;
 }
@@ -36,14 +33,13 @@ body {
 
 #main {
 	overflow:hidden;
-	display:block;
-	flex: 1 0 auto;
+	display:box;
 }
 
 #menu {
     background: #eee;
   	position:relative;
-  	float:right;
+  	float:right;  	
   	left:0px;
   	width:220px;
   	margin-left:15px;
@@ -101,7 +97,7 @@ body {
 #footer a:link {color: #7db223;}
 
 .quicklinks {
-	clear:both;
+	clear:both; 
 	padding-bottom: 15px
 }
 .quicklinks span {
@@ -144,8 +140,8 @@ div .box {
 
 /* menu elements*/
 
-a.menu, a.menu:link, a.menu:visited {display:block; width:150px; height:25px;}
-
+a.menu, a.menu:link, a.menu:visited {display:block; width:150px; height:25px;} 
+	
 /* text styles */
 
 h1,h2,h3 {

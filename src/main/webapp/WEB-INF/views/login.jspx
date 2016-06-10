@@ -5,13 +5,43 @@
     <jsp:output omit-xml-declaration="yes"/>
 
     <spring:url value="/resources/j_spring_security_check" var="form_url"/>
-    <spring:url value="/resources/images/scg-background-2.jpg" var="url_background"/>
-    <spring:url value="/resources/images/scg-logo.png" var="url_scg_logo"/>
+    <spring:url value="/resources/images/currency.jpg" var="url_background"/>
 
     <spring:message code="security_login_title" var="title" htmlEscape="false"/>
     <spring:message code="label_security_username" var="label_security_username"/>
     <spring:message code="label_security_password" var="label_security_password"/>
 
+    <spring:url value="/resources/styles/bootstrap.min.css" var="bootstrap_css_url" />
+    <spring:url value="/resources/styles/font-awesome.min.css" var="fontAwesome_css_url" />
+    <spring:url value="/resources/styles/jquery-ui-1.11.1.min.css" var="jqueryUI_css_url" />
+    <spring:url value="/resources/styles/jquery.timepicker.css" var="timepicker_css_url" />
+    <spring:url value="/resources/styles/common.css" var="common_css_url" />
+    <spring:url value="/resources/styles/fullcalendar.css" var="fullcalendar_css_url" />
+    <spring:url value="/resources/styles/fullcalendar.print.css" var="fullcalendarPrint_css_url" />
+    <spring:url value="/resources/styles/material.min.css" var="material_css_url" />
+    <spring:url value="/resources/styles/material-fullpalette.min.css" var="materialFullpalette_css_url" />
+    <spring:url value="/resources/styles/tokenfield-typeahead.min.css" var="tokenfieldTypeahead_css_url" />
+    <spring:url value="/resources/styles/simple-sidebar.css" var="simpleSidebar_css_url" />
+    <spring:url value="/resources/styles/slimscroll.css" var="slimscroll_css_url" />
+    <spring:url value="/resources/styles/ripples.min.css" var="ripples_css_url" />
+    <spring:url value="/resources/styles/ihover.css" var="ihover_css_url" />
+    <spring:url value="/resources/styles/standard.css" var="standard_css_url" />
+
+    <link rel="stylesheet" type="text/css" href="${bootstrap_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${fontAwesome_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${jqueryUI_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${timepicker_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${common_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${fullcalendar_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${fullcalendarPrint_css_url}" media='print' />
+    <link rel="stylesheet" type="text/css" href="${material_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${materialFullpalette_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${tokenfieldTypeahead_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${simpleSidebar_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${slimscroll_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${ripples_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${ihover_css_url}" />
+    <link rel="stylesheet" type="text/css" href="${standard_css_url}" />
     <style>
         body {
             background: url("${url_background}") no-repeat center center fixed;
@@ -80,15 +110,12 @@
                                 <label class="sr-only" for="j_username"><c:out value="${label_security_username}" /></label>
                                 <input id="j_username" class="form-control" type="text" name="j_username" autocomplete="off" placeholder="${label_security_username}" required="true"/>
                             </div>
-                            <div class="form-group has-feedback">
+                            <div class="form-group">
                                 <label class="sr-only" for="j_password"><c:out value="${label_security_password}" /></label>
                                 <input id="j_password" class="form-control" type="password" name="j_password" autocomplete="off" placeholder="${label_security_password}" required="true"/>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="text-align: center;">
                                 <button type="submit" class="btn btn-material-red-500 btn-raised" id="submit_button"><spring:message code="button_signin" /></button>
-                            </div>
-                            <div class="form-group">
-                                <p class="text-muted"><a href="#" data-toggle="modal" data-target="#_modal_forgot_password_id"><spring:message code="message_global_title_forgotpassword" /></a></p>
                             </div>
                         </div>
 
