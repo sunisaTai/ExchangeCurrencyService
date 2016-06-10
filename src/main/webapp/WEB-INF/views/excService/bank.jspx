@@ -469,7 +469,7 @@
       <p id="pModal"><jsp:text/></p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id="btnOkModal">OK</a>
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat" id="btnOkModal">OK</a>
     </div>
   </div>
 

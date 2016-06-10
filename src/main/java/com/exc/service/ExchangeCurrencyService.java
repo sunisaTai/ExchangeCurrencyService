@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface ExchangeCurrencyService {
     List<ExchangeCurrency> findExchangeCurrencyByDate(Date date);
-    void saveExchangeCurrency(String nameBank,String sell,String buy,Long idCurrency);
+    void saveExchangeCurrency(String nameBank,String sell,String buy,Long idCurrency,Long idExchangeCurrency);
+    List<ExchangeCurrency> findExchangeCurrencyByNameBank(String nameBank);
 }

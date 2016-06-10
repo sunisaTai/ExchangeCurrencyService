@@ -40,6 +40,25 @@ $("#selectBank").on('change',function(){
 	$("#btnSaveExchangeCurrency").show();
 	nameBank = $(".select-dropdown").val();
 	loadTableAddCurrency();
+
+	var dataExchangeCurrency = $.ajax({
+		    type: "GET",
+		    headers: {
+		   		Accept: 'application/json'
+		    },
+		    url: session['context']+'/exchangeCurrencys/findExchangeCurrencyByNameBank',
+		    data : {
+	            name:nameBank
+		    },
+		    async: false
+		}).responseJSON
+	if(dataExchangeCurrency.length != 0){
+
+		$.each(dataExchangeCurrency,function(index,item){
+			$("#inputSell"+item.currency.id).val(item.sell_rate);
+			$("#inputBuy"+item.currency.id).val(item.buy_rate);
+		})
+	}
 })
 
 function loadTableAddCurrency(){
@@ -74,10 +93,47 @@ function loadTableAddCurrency(){
 	};
 }
 $("#btnSaveExchangeCurrency").on('click',function(){
-	saveExchangeCurrency();
+	if(checkDataNullExchangeCurrency() == true){
+		saveExchangeCurrency();
+	}else{
+			$("#modal1").openModal();
+			$("h4[id=h4Modal]").text("กรุณากรอกข้อมูลให้ครบถ้วน");			
+			$("p[id=pModal]").text("");
+			$('#btnOkModal').click(function() {
+				$('#modal1').closeModal();
+			});
+	};
 })
+function checkDataNullExchangeCurrency(){
+
+		var statusSave = true;
+		if(jsondataCurrencyAll.length != 0){
+
+			$.each(jsondataCurrencyAll,function(index,item){
+				if($("#inputSell"+item.id).val() == "" && $("#inputBuy"+item.id).val() == ""){
+
+					statusSave = false ;
+				}
+			})
+		}else{
+			statusSave = true;
+		}
+
+		return statusSave;
+
+}
 function saveExchangeCurrency(){
+
+	var status = false;
+	var idExchangeCurrency = "";
 	$.each(jsondataCurrencyAll,function(index,item){
+		$.each(item.exchangeCurrency,function(indexs,items){
+			// if(items){
+			// }
+			idExchangeCurrency = items.id;
+		})
+		console.log("nameBank  :  "+nameBank);
+		console.log("idExchangeCurrency  :  "+idExchangeCurrency);
 		 var jsondata = $.ajax({
 	        type: "POST",
 	        headers: {
@@ -88,12 +144,13 @@ function saveExchangeCurrency(){
 	        	name_Bank:nameBank,
             	currency:item.id,
             	sell:$("#inputSell"+item.id).val(),
-            	buy:$("#inputBuy"+item.id).val()
+            	buy:$("#inputBuy"+item.id).val(),
+            	id:idExchangeCurrency
 	        },
 	        complete: function (xhr) {
 	            if (xhr.readyState == 4) {
 	                if (xhr.status == 201) {
-	                   
+	                	status = true;
 	                }else if (xhr.status == 500) {
 	                	alert("ERROR");
 	                }
@@ -103,5 +160,20 @@ function saveExchangeCurrency(){
 	        },async: false
 	    })
 	});
-}
 
+	if (status == true) {
+		$("#modal1").openModal();
+		$("h4[id=h4Modal]").text("บันทึกข้อมูลสำเร็จ");
+		$("p[id=pModal]").text("");
+		$('#btnOkModal').click(function() {
+		    $('#modal1').closeModal();
+		});
+	}else{
+		$("#modal1").openModal();
+		$("h4[id=h4Modal]").text("บันทึกข้อมูลไม่สำเร็จ");
+		$("p[id=pModal]").text("");
+		$('#btnOkModal').click(function() {
+		    $('#modal1').closeModal();
+		});	
+	};
+}

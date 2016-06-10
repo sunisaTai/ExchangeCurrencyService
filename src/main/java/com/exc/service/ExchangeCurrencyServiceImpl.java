@@ -22,7 +22,11 @@ public class ExchangeCurrencyServiceImpl implements ExchangeCurrencyService{
         return exchangeCurrencyRepository.findExchangeCurrencyByDate(date);
     }
     @Override
-    public void saveExchangeCurrency(String nameBank,String sell,String buy,Long idCurrency){
-        exchangeCurrencyRepository.saveExchangeCurrency(nameBank,sell,buy,idCurrency);
+    public void saveExchangeCurrency(String nameBank,String sell,String buy,Long idCurrency,Long idExchangeCurrency){
+        exchangeCurrencyRepository.saveExchangeCurrency(nameBank,sell,buy,idCurrency,idExchangeCurrency);
+    }
+    @Override
+    public List<ExchangeCurrency> findExchangeCurrencyByNameBank(String nameBank){
+        return exchangeCurrencyRepository.findExchangeCurrencyByNameBank(nameBank);
     }
 }

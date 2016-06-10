@@ -53,11 +53,13 @@ public class ExchangeCurrencyController_Custom_Controller {
     public ResponseEntity<String> saveExchangeCurrency(@RequestParam(value = "name_Bank", required = false) String name_Bank,
                                             @RequestParam(value = "currency", required = false) Long id_Currency,
                                             @RequestParam(value = "sell", required = false) String sell,
-                                            @RequestParam(value = "buy", required = false) String buy) {
+                                            @RequestParam(value = "buy", required = false) String buy,
+                                            @RequestParam(value = "id", required = false) Long id) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
         String nameBank = null;
         Long idCurrency = null;
+        Long idExchangeCurrency = null;
         String priceSell = null;
         String priceBuy = null;
         try {
@@ -65,9 +67,38 @@ public class ExchangeCurrencyController_Custom_Controller {
             priceSell = (sell == "" || sell == null ? "" : sell);
             priceBuy = (buy == "" || buy == null ? "" : buy);
             idCurrency = (id_Currency == null ? null : id_Currency);
-            exchangeCurrencyService.saveExchangeCurrency(nameBank,priceSell,priceBuy,idCurrency);
+            idExchangeCurrency = (id == null ? null : id);
+            exchangeCurrencyService.saveExchangeCurrency(nameBank,priceSell,priceBuy,idCurrency,idExchangeCurrency);
 
             return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+        } catch (Exception e) {
+            LOGGER.error("Error : {}", e);
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/findExchangeCurrencyByNameBank", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<String> findExchangeCurrencyByNameBank(@RequestParam(value = "name", required = false) String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        String nameBank = null;
+        try {
+            nameBank = (name == null ? null : name);
+            List<ExchangeCurrency> exchangeCurrency = exchangeCurrencyService.findExchangeCurrencyByNameBank(nameBank);
+
+        return new ResponseEntity<String>((new JSONSerializer().exclude("*.class")
+                .include("id")
+                .include("buy_rate")
+                .include("sell_rate")
+                .include("type_code")
+                .include("type_name")
+                .include("bank.id")
+                .include("bank.bank_Name")
+                .include("currency.currency_Name")
+                .include("currency.symbol")
+                .include("currency.id")
+                .exclude("*")
+                .deepSerialize(exchangeCurrency)),headers, HttpStatus.OK);
         } catch (Exception e) {
             LOGGER.error("Error : {}", e);
             return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);

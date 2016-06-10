@@ -1,22 +1,23 @@
 
 var idBankEdit;
 var jsondataBankAll;
+var bankCode = "";
+var bankName = "";
 $("#collapOne").on('click',function(){
 	clearDataBank();
 	loadTableBank();
 });
 
 $("#btnSaveBank").on('click',function(){
-	idBankEdit == null || idBankEdit == "" ? idBankEdit = "" : idBankEdit;
-	if ($("#inputBankName").val() != "" || $("#inputBankCode").val() != "") {
+	idBankEdit == null?idBankEdit = "" : idBankEdit;
+	bankCode = $("#inputBankCode").val();
+	bankName = $("#inputBankName").val();
 
-		// if(jsondataBankAll != ""){
+	if (bankCode != "" && bankName != "") {
 
-			// checkDataSame($("#inputBankName").val(),$("#inputBankCode").val());
-		// }else{
-
+		if(checkDataSame(bankName,bankCode) == true){
 			saveBank(idBankEdit);
-		// }
+		};
 
 	}else{
 
@@ -30,23 +31,31 @@ $("#btnSaveBank").on('click',function(){
 
 });
 
-/*function checkDataSame(name,code){
+function checkDataSame(name,code){
 
-	$.each(jsondataBankAll,function(index,item){
-		if(item.code == code && item.bank_Name == name){
+		var statusSave = true;
 
-			$("#modal1").openModal();
-			$("h4[id=h4Modal]").text("ข้อมูลซ้ำ");
-			$("p[id=pModal]").text("");
-			$('#btnOkModal').click(function() {
-				$('#modal1').closeModal();
-			});
-		}else{			
-			
-			saveBank(idBankEdit);
+		if(jsondataBankAll.length != 0){
+
+			$.each(jsondataBankAll,function(index,item){
+				if(item.code == code || item.bank_Name == name){
+
+					$("#modal1").openModal();
+					$("h4[id=h4Modal]").text("ข้อมูลซ้ำในระบบ");
+					$("p[id=pModal]").text("");
+					$('#btnOkModal').click(function() {
+						$('#modal1').closeModal();
+					});
+					statusSave = false ;
+				}
+			})
+		}else{
+			statusSave = true ;
 		}
-	})
-}*/
+
+		return statusSave;
+
+}
 function saveBank(id){
 	var idBank = (id == "" || id == null ? "" : id);
 
@@ -155,9 +164,25 @@ function loadTableBank(){
 function deleteBank(id){
 	var jsonData = $.ajax({
 	        type: "DELETE",
-	        url: session['context']+'/banks/deleteBank/'+id
+	        url: session['context']+'/banks/deleteBank/'+id,
+	        complete: function (xhr) {
+	            if (xhr.readyState == 4) {
+	                if (xhr.status == 200) {
+	                    $("#modal1").openModal();
+				        $("h4[id=h4Modal]").text("ลบข้อมูลสำเร็จ");
+				        $("p[id=pModal]").text("");
+				        $('#btnOkModal').click(function() {
+				            $('#modal1').closeModal();
+				        });
+	                    loadTableBank();
+	                }else if (xhr.status == 500) {
+	                	alert("ERROR");
+	                }
+	            } else {
+	            	alert("ERROR");
+	            }
+	        },async: false
 	    });
-	loadTableBank();
 }
 function clearDataBank() {
 	$("#inputBankName").val("")

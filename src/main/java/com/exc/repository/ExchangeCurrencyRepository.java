@@ -54,50 +54,119 @@ public class ExchangeCurrencyRepository {
         return criteria.list();
     }
     //Created By Sunisa 15-02-2016
-    public void saveExchangeCurrency(String nameBank,String sell,String buy,Long idCurrency) {
+    public void saveExchangeCurrency(String nameBank,String sell,String buy,Long idCurrency,Long idExchangeCurrency) {
 
-        Bank bank = new Bank();
-        Currency currency = new Currency();
-        DateForExchange dateForExchange = new DateForExchange();
-        ExchangeCurrency exchangeCurrency = new ExchangeCurrency();
-        try{
-            Date date = new Date();
-            Date today = removeTime(date);
-            dateForExchange = dateForExchangeRepository.findDateForExchangeByDate(today);
-            if (dateForExchange == null) {
-                DateForExchange dateExchange = new DateForExchange();
+        if(idExchangeCurrency == null){
+            LOGGER.error("null");
+            Bank bank = new Bank();
+            Currency currency = new Currency();
+            DateForExchange dateForExchange = new DateForExchange();
+            ExchangeCurrency exchangeCurrency = new ExchangeCurrency();
+            try{
+                Date date = new Date();
+                Date today = removeTime(date);
+                dateForExchange = dateForExchangeRepository.findDateForExchangeByDate(today);
+                if (dateForExchange == null) {
+                    DateForExchange dateExchange = new DateForExchange();
 
-                float priceSell = Float.parseFloat(sell);
-                float priceBuy = Float.parseFloat(buy);
-                bank = bankRepository.findBankByNameBank(nameBank);
-                currency = currencyRepository.findCurrencyById(idCurrency);
-                dateExchange.setDatePerExchange(today);
-                dateExchange.persist();
+                    float priceSell = Float.parseFloat(sell);
+                    float priceBuy = Float.parseFloat(buy);
+                    bank = bankRepository.findBankByNameBank(nameBank);
+                    currency = currencyRepository.findCurrencyById(idCurrency);
+                    dateExchange.setDatePerExchange(today);
+                    dateExchange.persist();
 
-                exchangeCurrency.setBank(bank);
-                exchangeCurrency.setDateForExchange(dateExchange);
-                exchangeCurrency.setCurrency(currency);
-                exchangeCurrency.setBuy_rate(priceSell);
-                exchangeCurrency.setSell_rate(priceBuy);
-                exchangeCurrency.persist();
-            }else{
-                float priceSell = Float.parseFloat(sell);
-                float priceBuy = Float.parseFloat(buy);
-                bank = bankRepository.findBankByNameBank(nameBank);
-                currency = currencyRepository.findCurrencyById(idCurrency);
+                    exchangeCurrency.setBank(bank);
+                    exchangeCurrency.setDateForExchange(dateExchange);
+                    exchangeCurrency.setCurrency(currency);
+                    exchangeCurrency.setBuy_rate(priceBuy);
+                    exchangeCurrency.setSell_rate(priceSell);
+                    exchangeCurrency.persist();
+                }else{
+                    float priceSell = Float.parseFloat(sell);
+                    float priceBuy = Float.parseFloat(buy);
+                    bank = bankRepository.findBankByNameBank(nameBank);
+                    currency = currencyRepository.findCurrencyById(idCurrency);
 
-                exchangeCurrency.setBank(bank);
-                exchangeCurrency.setDateForExchange(dateForExchange);
-                exchangeCurrency.setCurrency(currency);
-                exchangeCurrency.setBuy_rate(priceSell);
-                exchangeCurrency.setSell_rate(priceBuy);
-                exchangeCurrency.persist();
+                    exchangeCurrency.setBank(bank);
+                    exchangeCurrency.setDateForExchange(dateForExchange);
+                    exchangeCurrency.setCurrency(currency);
+                    exchangeCurrency.setBuy_rate(priceBuy);
+                    exchangeCurrency.setSell_rate(priceSell);
+                    exchangeCurrency.persist();
+                }
+            }catch(Exception e){
+                LOGGER.error("Error : {}", e.getMessage());
+                throw new RuntimeException(e);
             }
-        }catch(Exception e){
-            LOGGER.error("Error : {}", e.getMessage());
-            throw new RuntimeException(e);
+        }else {
+            LOGGER.error("Not null");
+            Bank bank = new Bank();
+            Currency currency = new Currency();
+            DateForExchange dateForExchange = new DateForExchange();
+            ExchangeCurrency exchangeCurrency = null;
+
+            exchangeCurrency = findExchangeCurrencyById(idExchangeCurrency);
+            try{
+                Date date = new Date();
+                Date today = removeTime(date);
+                dateForExchange = dateForExchangeRepository.findDateForExchangeByDate(today);
+                if (dateForExchange == null) {
+                    DateForExchange dateExchange = new DateForExchange();
+
+                    float priceSell = Float.parseFloat(sell);
+                    float priceBuy = Float.parseFloat(buy);
+                    bank = bankRepository.findBankByNameBank(nameBank);
+                    currency = currencyRepository.findCurrencyById(idCurrency);
+                    dateExchange.setDatePerExchange(today);
+                    dateExchange.persist();
+
+                    exchangeCurrency.setBank(bank);
+                    exchangeCurrency.setDateForExchange(dateExchange);
+                    exchangeCurrency.setCurrency(currency);
+                    exchangeCurrency.setBuy_rate(priceBuy);
+                    exchangeCurrency.setSell_rate(priceSell);
+                    exchangeCurrency.merge();
+                }else{
+                    float priceSell = Float.parseFloat(sell);
+                    float priceBuy = Float.parseFloat(buy);
+                    bank = bankRepository.findBankByNameBank(nameBank);
+                    currency = currencyRepository.findCurrencyById(idCurrency);
+
+                    exchangeCurrency.setBank(bank);
+                    exchangeCurrency.setDateForExchange(dateForExchange);
+                    exchangeCurrency.setCurrency(currency);
+                    exchangeCurrency.setBuy_rate(priceBuy);
+                    exchangeCurrency.setSell_rate(priceSell);
+                    exchangeCurrency.merge();
+                }
+            }catch(Exception e){
+                LOGGER.error("Error : {}", e.getMessage());
+                throw new RuntimeException(e);
+            }    
         }
+        
     }
+
+    public ExchangeCurrency findExchangeCurrencyById(Long id){
+        Criteria criteria = ((Session) em.getDelegate()).createCriteria(ExchangeCurrency.class);
+                criteria.add(Restrictions.eq("id",id));
+        ExchangeCurrency result = (ExchangeCurrency)criteria.uniqueResult();
+        return result;
+    }
+
+    public List<ExchangeCurrency> findExchangeCurrencyByNameBank(String nameBank){
+        Date date = new Date();
+        Date today = removeTime(date);
+
+        Criteria criteria = ((Session) em.getDelegate()).createCriteria(ExchangeCurrency.class);
+        criteria.createAlias("dateForExchange","date");
+        criteria.createAlias("bank","b");
+                criteria.add(Restrictions.eq("date.datePerExchange",today));
+                criteria.add(Restrictions.eq("b.bank_Name",nameBank));
+        return criteria.list();
+    }
+
     //Created By Sunisa 15-02-2016
     public static Date removeTime(Date date) {
         Calendar cal = Calendar.getInstance();
@@ -108,4 +177,5 @@ public class ExchangeCurrencyRepository {
         cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
     };
+
 }

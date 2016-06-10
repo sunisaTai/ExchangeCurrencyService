@@ -1,15 +1,57 @@
-
+var jsondataCurrencyAll;
 var idCurrencyEdit;
-
+var currencyCode = "";
+var currencyName = "";
 $("#collapTwo").on('click',function(){
 	clearDataCurrency();
 	loadTableCurrency();
 });
 
 $("#btnSaveCurrency").on('click',function(){
-	saveCurrency(idCurrencyEdit);
-});
 
+	currencyCode = $("#inputCurrencyCode").val();
+	currencyName = $("#inputCurrencyName").val();
+
+	if (currencyCode != "" && currencyName != "") {
+
+		if(checkDataSameCurrency(currencyName,currencyCode) == true){
+			saveCurrency(idCurrencyEdit);
+		};
+
+	}else{
+
+		$("#modal1").openModal();
+		$("h4[id=h4Modal]").text("กรุณากรอกข้อมูลให้ครบถ้วน");
+		$("p[id=pModal]").text("");
+		$('#btnOkModal').click(function() {
+			$('#modal1').closeModal();
+		});
+	};
+});
+function checkDataSameCurrency(name,code){
+
+		var statusSave = true;
+		if(jsondataCurrencyAll.length != 0){
+
+			$.each(jsondataCurrencyAll,function(index,item){
+				if(item.code == code || item.currency_Name == name){
+
+					$("#modal1").openModal();
+					$("h4[id=h4Modal]").text("ข้อมูลซ้ำในระบบ");
+					$("p[id=pModal]").text("");
+					$('#btnOkModal').click(function() {
+						$('#modal1').closeModal();
+					});
+					statusSave = false ;
+				}
+			})
+		}else{
+			statusSave = true;
+		}
+
+		return statusSave;
+
+}
 function saveCurrency(id){
 	var dataSymbol = '';
 	if (valueImage == 'au.png') {
@@ -72,6 +114,12 @@ function saveCurrency(id){
 	        complete: function (xhr) {
 	            if (xhr.readyState == 4) {
 	                if (xhr.status == 201) {
+	                    $("#modal1").openModal();
+				        $("h4[id=h4Modal]").text("บันทึกข้อมูลสำเร็จ");
+				        $("p[id=pModal]").text("");
+				        $('#btnOkModal').click(function() {
+				            $('#modal1').closeModal();
+				        });
 	                    loadTableCurrency();
 	                    clearDataCurrency();
 	                    idCurrencyEdit = "";
@@ -163,7 +211,7 @@ function editCurrency(id){
 }
 function loadTableCurrency(){
 
-	var jsondataCurrencyAll = $.ajax({
+	jsondataCurrencyAll = $.ajax({
 	        type: "GET",
 	        url: session['context']+'/currencys/findAllCurrency',
 	        async: false
@@ -187,9 +235,25 @@ function loadTableCurrency(){
 function deleteCurrency(id){
 	var jsonData = $.ajax({
 	        type: "DELETE",
-	        url: session['context']+'/currencys/deleteCurrency/'+id
+	        url: session['context']+'/currencys/deleteCurrency/'+id,
+	        complete: function (xhr) {
+	            if (xhr.readyState == 4) {
+	                if (xhr.status == 200) {
+	                    $("#modal1").openModal();
+				        $("h4[id=h4Modal]").text("ลบข้อมูลสำเร็จ");
+				        $("p[id=pModal]").text("");
+				        $('#btnOkModal').click(function() {
+				            $('#modal1').closeModal();
+				        });
+	                    loadTableCurrency();
+	                }else if (xhr.status == 500) {
+	                	alert("ERROR");
+	                }
+	            } else {
+	            	alert("ERROR");
+	            }
+	        },async: false
 	    });
-	loadTableCurrency();
 }
 function clearDataCurrency() {
 	$("#inputCurrencyCode").val("")
