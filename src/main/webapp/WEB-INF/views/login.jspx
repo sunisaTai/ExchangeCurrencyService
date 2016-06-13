@@ -88,17 +88,8 @@
                         <div class="">
                             <ul class="media-list">
                                 <li class="media">
-                                    <!-- <div class="media-left">
-                                         <a href="#">
-                                             <img class="" src="${url_scg_logo}" />
-                                         </a>
-                                     </div>-->
-                                    <!--        <div class="media-body">
-                                                <h1 class="text-eng">SCG  Packaging</h1>
-                                            </div>-->
                                 </li>
                             </ul>
-                            <!--<h2 class="text-eng">&#160;&#160;&#160;&#160;&#160;<spring:message code="security_login_title" /></h2>-->
                         </div>
                         <br/>
                         <div class="well" style="border:10px solid #ECF0F1;border-radius: 2%">
