@@ -62,14 +62,25 @@ public class BankRepository {
 
     public Bank findBankById(Long idBank){
         Criteria criteria = ((Session) em.getDelegate()).createCriteria(Bank.class);
-                criteria.add(Restrictions.eq("id",idBank));
+        criteria.add(Restrictions.eq("id",idBank));
         Bank result = (Bank)criteria.uniqueResult();
         return result;
     }
     public Bank findBankByNameBank(String nameBank){
         Criteria criteria = ((Session) em.getDelegate()).createCriteria(Bank.class);
-                criteria.add(Restrictions.eq("bank_Name",nameBank));
+        criteria.add(Restrictions.eq("bank_Name",nameBank));
         Bank result = (Bank)criteria.uniqueResult();
         return result;
+    }
+
+    public List<Bank> findBankByDate(Date date){
+        Criteria criteria = ((Session) em.getDelegate()).createCriteria(Bank.class);
+        criteria.createCriteria("exchangeCurrency","exchangeCurrency",Criteria.LEFT_JOIN);
+        criteria.createCriteria("exchangeCurrency.dateForExchange","dateForExchange",Criteria.LEFT_JOIN);
+        criteria.createAlias("exchangeCurrency.currency","currency");
+        criteria.add(Restrictions.eq("dateForExchange.datePerExchange",date));
+        criteria.addOrder(Order.asc("currency.code"));
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        return criteria.list();
     }
 }

@@ -53,6 +53,22 @@ public class CurrencyController_Custom_Controller {
         }
     }
 
+    @RequestMapping(value = "/findAllCurrencyOrderByCurrencyName",method = RequestMethod.GET,headers = "Accept=application/json")
+    public ResponseEntity<String> findAllCurrencyOrderByCurrencyName() throws Exception{
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        try {
+            List<Currency> result = Currency.findAllCurrencys("currency_Name","ASC");
+            if(result == null){
+                return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<String>((new JSONSerializer().include("id").include("exchangeCurrency.buy_rate").include("exchangeCurrency.sell_rate").include("currency_Name").include("symbol").include("code").include("exchangeCurrency.bank.id").include("exchangeCurrency.bank.bank_Name").include("exchangeCurrency.bank.code").include("exchangeCurrency.id").include("image_name").exclude("*").deepSerialize(result)),headers, HttpStatus.OK);
+        }catch (Exception e) {
+            LOGGER.error("Error : {}", e);
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @RequestMapping(value = "/findCurrencyByIdCurrency",method = RequestMethod.GET,headers = "Accept=application/json")
     public ResponseEntity<String> findCurrencyByIdCurrency(@RequestParam(value = "id", required = false)Long id) throws Exception{
         HttpHeaders headers = new HttpHeaders();

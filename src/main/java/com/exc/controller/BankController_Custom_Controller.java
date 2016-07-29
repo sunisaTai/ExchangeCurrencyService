@@ -5,6 +5,8 @@ import com.exc.service.BankService;
 import com.exc.repository.BankRepository;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -119,5 +121,28 @@ public class BankController_Custom_Controller {
         }catch(Exception e){
             return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(value = "/findBankByDate",method = RequestMethod.GET,headers = "Accept=application/json")
+    public ResponseEntity<String> findBankByDate(@RequestParam(value = "date", required = false)String str_date) throws Exception{
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy",Locale.US);
+        Date date = format.parse(str_date);
+        List<Bank> result = bankService.findBankByDate(date);
+        return new ResponseEntity<String>((new JSONSerializer().exclude("*.class")
+                .include("bank_Name")
+                .include("id")
+                .include("code")
+                .include("exchangeCurrency.currency.id")
+                .include("exchangeCurrency.currency.currency_Name")
+                .include("exchangeCurrency.currency.symbol")
+                .include("exchangeCurrency.currency.code")
+                .include("exchangeCurrency.buy_rate")
+                .include("exchangeCurrency.sell_rate")
+                .include("exchangeCurrency.dateForExchange.id")
+                .include("exchangeCurrency.dateForExchange.datePerExchange")
+                .exclude("*")
+                .deepSerialize(result)),headers, HttpStatus.OK);
     }
 }

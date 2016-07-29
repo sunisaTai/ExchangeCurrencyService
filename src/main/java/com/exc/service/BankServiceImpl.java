@@ -24,4 +24,9 @@ public class BankServiceImpl implements BankService{
         bankRepository.saveBanks(id,name,code,image);
     }
 
+    @Override
+    public List<Bank> findBankByDate(Date date){
+        return bankRepository.findBankByDate(date);
+    }
+
 }

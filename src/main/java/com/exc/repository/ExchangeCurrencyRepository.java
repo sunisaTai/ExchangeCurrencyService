@@ -167,6 +167,19 @@ public class ExchangeCurrencyRepository {
         return criteria.list();
     }
 
+    public List<ExchangeCurrency> findExchangeCurrencyByNameIdAndCurrencyIdAndDate(Long bank,Long currency,Date date){
+        Criteria criteria = ((Session) em.getDelegate()).createCriteria(ExchangeCurrency.class);
+        criteria.createAlias("dateForExchange","date");
+        criteria.createAlias("bank","bank");
+        criteria.createAlias("currency","currency");
+
+        criteria.add(Restrictions.eq("date.datePerExchange",date));
+        criteria.add(Restrictions.eq("bank.id",bank));
+        criteria.add(Restrictions.eq("currency.id",currency));
+
+        return criteria.list();
+    }
+
     //Created By Sunisa 15-02-2016
     public static Date removeTime(Date date) {
         Calendar cal = Calendar.getInstance();
