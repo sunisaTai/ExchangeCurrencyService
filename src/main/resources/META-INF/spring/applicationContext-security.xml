@@ -13,7 +13,14 @@
         <intercept-url pattern="/member/**" access="isAuthenticated()" />
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/login/**" access="permitAll" />
+        <intercept-url pattern="/exchangeCurrencys/findExchangeCurrencyByDate" access="permitAll" />
+        <intercept-url pattern="/banks/findBankByDate" access="permitAll" />
+        <intercept-url pattern="/banks/findAllBank" access="permitAll" />
+        <intercept-url pattern="/currencys/findAllCurrencyOrderByCurrencyName" access="permitAll" />
+        <intercept-url pattern="/exchangeCurrencys/calculateBuyingPrice" access="permitAll" />
+        <intercept-url pattern="/exchangeCurrencys/calculateSellingPrice" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
+
     </http>
     <!-- Configure Authentication mechanism -->
     <authentication-manager alias="authenticationManager">

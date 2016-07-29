@@ -29,4 +29,32 @@ public class ExchangeCurrencyServiceImpl implements ExchangeCurrencyService{
     public List<ExchangeCurrency> findExchangeCurrencyByNameBank(String nameBank){
         return exchangeCurrencyRepository.findExchangeCurrencyByNameBank(nameBank);
     }
+    @Override
+    public Float calculateBuyingPrice(Date date,Float money,Long bank,Long currency){
+        List<ExchangeCurrency> exchangeCurrencyList = exchangeCurrencyRepository.findExchangeCurrencyByNameIdAndCurrencyIdAndDate(bank,currency,date);
+        Float selling = 0f;
+        Float result = 0f;
+        if(exchangeCurrencyList.size() != 0){
+            for (ExchangeCurrency e:exchangeCurrencyList){
+                selling = e.getSell_rate();
+                break;
+            }
+            result = money/selling;
+        }
+        return result;
+    }
+    @Override
+    public Float calculateSellingPrice(Date date,Float money,Long bank,Long currency){
+        List<ExchangeCurrency> exchangeCurrencyList = exchangeCurrencyRepository.findExchangeCurrencyByNameIdAndCurrencyIdAndDate(bank,currency,date);
+        Float buying = 0f;
+        Float result = 0f;
+        if(exchangeCurrencyList.size() != 0){
+            for (ExchangeCurrency e:exchangeCurrencyList){
+                buying = e.getBuy_rate();
+                break;
+            }
+            result = money*buying;
+        }
+        return result;
+    }
 }

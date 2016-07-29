@@ -1,5 +1,6 @@
 package com.exc.controller;
 
+import org.springframework.expression.spel.ast.FloatLiteral;
 import org.springframework.ui.Model;
 import com.exc.domain.ExchangeCurrency;
 import com.exc.service.ExchangeCurrencyService;
@@ -105,4 +106,85 @@ public class ExchangeCurrencyController_Custom_Controller {
         }
     }
 
+    @RequestMapping(value = "/calculateBuyingPrice", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<String> calculateBuyingPrice(@RequestParam(value = "date", required = true) String str_date,
+                                                       @RequestParam(value = "money", required = true) String str_money,
+                                                       @RequestParam(value = "bank", required = true) String bank,
+                                                       @RequestParam(value = "currency", required = true) String currency) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy",Locale.US);
+            Date date = format.parse(str_date);
+            Long bankId = 0l;
+            Long currencyId = 0l;
+            Float money = 0f;
+
+            try{
+                bankId = Long.valueOf(bank);
+            }catch (Exception e){
+                bankId = 0l;
+            }
+
+            try{
+                currencyId = Long.valueOf(currency);
+            }catch (Exception e){
+                currencyId = 0l;
+            }
+
+            try{
+                money = Float.valueOf(str_money);
+            }catch (Exception e){
+                money = 0f;
+            }
+
+            Float result = exchangeCurrencyService.calculateBuyingPrice(date,money,bankId,currencyId);
+            return new ResponseEntity<String>(result.toString(),headers, HttpStatus.OK);
+        } catch (Exception e) {
+            LOGGER.error("Error : {}", e);
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/calculateSellingPrice", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<String> calculateSellingPrice(@RequestParam(value = "date", required = true) String str_date,
+                                                       @RequestParam(value = "money", required = true) String str_money,
+                                                       @RequestParam(value = "bank", required = true) String bank,
+                                                       @RequestParam(value = "currency", required = true) String currency) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy",Locale.US);
+            Date date = format.parse(str_date);
+            Long bankId = 0l;
+            Long currencyId = 0l;
+            Float money = 0f;
+
+            try{
+                bankId = Long.valueOf(bank);
+            }catch (Exception e){
+                bankId = 0l;
+            }
+
+            try{
+                currencyId = Long.valueOf(currency);
+            }catch (Exception e){
+                currencyId = 0l;
+            }
+
+            try{
+                money = Float.valueOf(str_money);
+            }catch (Exception e){
+                money = 0f;
+            }
+
+            Float result = exchangeCurrencyService.calculateSellingPrice(date,money,bankId,currencyId);
+            return new ResponseEntity<String>(result.toString(),headers, HttpStatus.OK);
+        } catch (Exception e) {
+            LOGGER.error("Error : {}", e);
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
